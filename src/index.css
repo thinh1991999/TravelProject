@@ -1,0 +1,163 @@
+@tailwind base;
+
+@layer base {
+  h1 {
+    @apply text-5xl font-semibold;
+  }
+  h2 {
+    @apply text-4xl font-semibold;
+  }
+  h3 {
+    @apply text-3xl font-semibold;
+  }
+  h4 {
+    @apply text-2xl font-semibold;
+  }
+  h5 {
+    @apply text-xl font-semibold;
+  }
+  h6 {
+    @apply text-lg font-semibold;
+  }
+  body {
+    font-size: 16px;
+  }
+  input {
+    @apply outline-none border-none bg-transparent;
+  }
+}
+
+@tailwind components;
+
+.btn {
+  @apply px-4 py-2 rounded-md  flex justify-center items-center;
+}
+
+.btn-trans:hover {
+  @apply bg-gray-100 rounded-full transition-all ease-linear duration-100;
+}
+
+.btn-blue {
+  @apply text-white bg-blue-500  hover:bg-blue-700;
+}
+
+.btn-white {
+  @apply text-black bg-white  hover:bg-gray-300;
+}
+
+.btn-border {
+  @apply border border-gray-400;
+}
+
+.btn-x {
+  @apply w-[45px] h-[45px] flex justify-center items-center text-xl;
+}
+
+.btn-primary {
+  color: white;
+  background: radial-gradient(
+    circle at center,
+    #ff385c 0%,
+    #e61e4d 27.5%,
+    #e31c5f 40%,
+    #d70466 57.5%,
+    #bd1e59 75%,
+    #bd1e59 100%
+  );
+}
+
+.btn-primary:hover {
+  background: radial-gradient(
+    circle at center,
+    #fc3156 0%,
+    #f11c4e 27.5%,
+    #f1155f 40%,
+    #ec0471 57.5%,
+    #d31f61 75%,
+    #cf175b 100%
+  );
+}
+
+.border-color {
+  @apply border-solid border-gray-300;
+}
+
+.row {
+  @apply flex flex-wrap -m-2;
+}
+
+.row-big {
+  @apply flex flex-wrap -m-5;
+}
+
+.sub-gray {
+  @apply font-light;
+}
+
+.one-line-max {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.hv-sd:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: all linear 0.3s;
+}
+
+.div-bd {
+  @apply w-[1px] bg-gray-300;
+}
+
+@tailwind utilities;
+
+/* Custom swiper */
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  opacity: 0.7;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px !important;
+  color: black;
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  display: none !important;
+}
+
+.swiper-pagination-bullet {
+  background: rgb(252, 250, 250);
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background: white;
+  opacity: 1;
+}
+
+/* Custom lazy loading */
+.lazy-load-image-background img {
+  height: 100%;
+}
+
+/* Custom calendar */
+.react-calendar {
+  border: unset;
+}
