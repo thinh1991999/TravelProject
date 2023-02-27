@@ -161,3 +161,32 @@
 .react-calendar {
   border: unset;
 }
+
+abbr:where([title]) {
+  text-decoration: unset !important;
+  @apply text-gray-500;
+}
+
+.react-calendar button {
+  @apply aspect-square rounded-full;
+}
+
+.react-calendar__tile:enabled:hover {
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+.react-calendar__tile:enabled:focus {
+  @apply bg-black text-white;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background: unset;
+}
+
+.react-calendar__navigation__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
