@@ -33,6 +33,10 @@
   @apply px-4 py-2 rounded-md  flex justify-center items-center;
 }
 
+.btn-black {
+  @apply bg-gray-800 text-white rounded-full px-6 py-2;
+}
+
 .btn-trans:hover {
   @apply bg-gray-100 rounded-full transition-all ease-linear duration-100;
 }
@@ -50,7 +54,7 @@
 }
 
 .btn-x {
-  @apply w-[45px] h-[45px] flex justify-center items-center text-xl;
+  @apply w-[45px] h-[45px] rounded-full flex justify-center items-center text-xl;
 }
 
 .btn-primary {
@@ -64,6 +68,10 @@
     #bd1e59 75%,
     #bd1e59 100%
   );
+}
+
+.animate {
+  @apply transition-all ease-linear duration-300;
 }
 
 .btn-primary:hover {
@@ -101,6 +109,13 @@
   overflow: hidden;
 }
 
+.three-line-max {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .shadow {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -112,6 +127,10 @@
 
 .div-bd {
   @apply w-[1px] bg-gray-300;
+}
+
+.loading {
+  @apply bg-slate-300;
 }
 
 @tailwind utilities;
@@ -189,4 +208,17 @@ abbr:where([title]) {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.react-calendar__navigation__label {
+  @apply flex items-center;
+}
+
+.react-calendar__navigation__label__labelText--from,
+.react-calendar__navigation__label__labelText--to {
+  @apply flex-1 font-bold;
+}
+
+.react-calendar__navigation__label__divider {
+  @apply hidden;
 }

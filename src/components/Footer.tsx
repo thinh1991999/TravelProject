@@ -3,7 +3,7 @@ import { footerData } from "../share/data";
 
 const Footer = () => {
   return (
-    <footer className="py-10">
+    <footer className="py-10 bg-stone-200">
       <div className="container m-auto row">
         {footerData.map((vl, idx) => {
           const { title, childs } = vl;
@@ -14,7 +14,7 @@ const Footer = () => {
                 <ul className="mt-5">
                   {childs.map((child, idxC) => {
                     return (
-                      <li key={idxC} className="py-2">
+                      <li key={idxC} className="py-2 hover:text-primary">
                         <a href=""> {child.title}</a>
                       </li>
                     );

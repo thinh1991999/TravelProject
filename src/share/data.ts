@@ -1,3 +1,5 @@
+import { GuestsEnum } from "../interfaces/redux";
+
 export const footerData: {
   title: string;
   childs: {
@@ -104,5 +106,37 @@ export const footerData: {
         link: "/",
       },
     ],
+  },
+];
+
+export const guestSearch: {
+  title: string;
+  sub: string;
+  hint: GuestsEnum;
+  tail: "adults" | "children" | "infants" | "pets";
+}[] = [
+  {
+    title: "Adults",
+    sub: "Ages 13 or above",
+    hint: GuestsEnum.ADULTS,
+    tail: "adults",
+  },
+  {
+    title: "Children",
+    sub: "Ages 2–12",
+    hint: GuestsEnum.CHILDREN,
+    tail: "children",
+  },
+  {
+    title: "Infants",
+    sub: "Under 2",
+    hint: GuestsEnum.INFANTS,
+    tail: "infants",
+  },
+  {
+    title: "Pets",
+    sub: "",
+    hint: GuestsEnum.PETS,
+    tail: "pets",
   },
 ];

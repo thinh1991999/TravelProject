@@ -7,16 +7,32 @@ import Card from "./components/Card";
 import Layout from "./components/Layout";
 import Detail from "./pages/Detail";
 
-function App() {
-  const [count, setCount] = useState(0);
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
 
-  return (
-    <div className="">
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <Layout>
+        <Home />
+      </Layout>
+    ),
+  },
+  {
+    path: "/detail/:id",
+    element: (
       <Layout>
         <Detail />
       </Layout>
-    </div>
-  );
+    ),
+  },
+]);
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

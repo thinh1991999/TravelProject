@@ -10,5 +10,11 @@ export const MyImage = ({
     src: string;
   };
 }) => (
-  <LazyLoadImage alt={image.alt} effect="blur" src={image.src} height="100%" />
+  <LazyLoadImage
+    alt={image.alt}
+    effect="blur"
+    src={image.src}
+    height="100%"
+    width="100%"
+  />
 );

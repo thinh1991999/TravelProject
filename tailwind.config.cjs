@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#FF385C",
+      },
+    },
     screens: {
       sm: "640px",
       // => @media (min-width: 640px) { ... }

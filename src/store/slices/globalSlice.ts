@@ -5,7 +5,8 @@ import { GlobalState } from "../../interfaces/redux";
 
 // Define the initial state using that type
 const initialState: GlobalState = {
-  isSearchHeader: true,
+  isSearchHeader: false,
+  searchDrop: null,
 };
 
 export const globalSlice = createSlice({
@@ -15,10 +16,13 @@ export const globalSlice = createSlice({
     changeShowSearch: (state, action: PayloadAction<Boolean>) => {
       state.isSearchHeader = action.payload;
     },
+    setSearchDrop: (state, action: PayloadAction<number | null>) => {
+      state.searchDrop = action.payload;
+    },
   },
 });
 
-export const { changeShowSearch } = globalSlice.actions;
+export const { changeShowSearch, setSearchDrop } = globalSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectCount = (state: RootState) => state.counter.value;
