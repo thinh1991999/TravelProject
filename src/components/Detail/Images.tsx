@@ -1,10 +1,15 @@
 import React, { useState, lazy } from "react";
 import { TbGridDots } from "react-icons/tb";
+import { useAppSelector } from "../../store/hook";
+import Cube from "../Cube";
 import { MyImage } from "../MyImage";
 const AllImages = lazy(() => import("./AllImages"));
 
-const Images = ({ imgs }: { imgs: string[] }) => {
+const Images = () => {
   const [isShowAll, setIsShowAll] = useState<boolean>(false);
+  const roomDetail = useAppSelector((state) => state.detail.roomDetail);
+  if (!roomDetail) return <></>;
+  const { images } = roomDetail.room;
   return (
     <>
       <div className="my-3 rounded-xl overflow-hidden flex relative h-[calc(60vh_-_64px)]">
@@ -16,13 +21,16 @@ const Images = ({ imgs }: { imgs: string[] }) => {
             <MyImage
               image={{
                 alt: "",
-                src: imgs[0],
+                src: images[0].publicUrl,
               }}
             />
           </div>
         </div>
+        {/* <div className="w-2/4 flex justify-center items-center">
+          <Cube size={300} imgs={imgs} />
+        </div> */}
         <div className="w-1/4 h-full pl-4">
-          {imgs.slice(1, 3).map((img, idx) => {
+          {images.slice(1, 3).map((img, idx) => {
             return (
               <div className={`h-1/2 ${idx === 1 ? "pt-4" : ""}`} key={idx}>
                 <div
@@ -32,7 +40,7 @@ const Images = ({ imgs }: { imgs: string[] }) => {
                   <MyImage
                     image={{
                       alt: "",
-                      src: img,
+                      src: img.publicUrl,
                     }}
                   />
                 </div>
@@ -41,7 +49,7 @@ const Images = ({ imgs }: { imgs: string[] }) => {
           })}
         </div>
         <div className="w-1/4 h-full pl-4">
-          {imgs.slice(3, 5).map((img, idx) => {
+          {images.slice(3, 5).map((img, idx) => {
             return (
               <div className={`h-1/2 ${idx === 1 ? "pt-4" : ""}`} key={idx}>
                 <div
@@ -51,7 +59,7 @@ const Images = ({ imgs }: { imgs: string[] }) => {
                   <MyImage
                     image={{
                       alt: "",
-                      src: img,
+                      src: img.publicUrl,
                     }}
                   />
                 </div>
@@ -66,7 +74,7 @@ const Images = ({ imgs }: { imgs: string[] }) => {
           <TbGridDots className="mr-2" /> show all photos
         </button>
       </div>
-      <AllImages show={isShowAll} setIsShowAll={setIsShowAll} imgs={imgs} />
+      <AllImages show={isShowAll} setIsShowAll={setIsShowAll} imgs={images} />
     </>
   );
 };

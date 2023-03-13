@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 // import type { RootState } from "../../app/store";
 import { DetailState, GlobalState, GuestsEnum } from "../../interfaces/redux";
+import { RoomDetail } from "../../interfaces/detail";
 
 // Define the initial state using that type
 const initialState: DetailState = {
@@ -12,6 +13,8 @@ const initialState: DetailState = {
   pets: 0,
   checkin: null,
   checkout: null,
+  list: [{ a: "1" }],
+  roomDetail: null,
 };
 
 export const globalSlice = createSlice({
@@ -26,10 +29,13 @@ export const globalSlice = createSlice({
         state[action.payload]--;
       }
     },
+    setRoomDetail: (state, action: PayloadAction<RoomDetail>) => {
+      state.roomDetail = action.payload;
+    },
   },
 });
 
-export const { handleIncreaseGuests, handleDecreaseGuests } =
+export const { handleIncreaseGuests, handleDecreaseGuests, setRoomDetail } =
   globalSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type

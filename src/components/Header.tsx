@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../store/hook";
 import { changeShowSearch, setSearchDrop } from "../store/slices/globalSlice";
 import Logo from "./Logo";
 import SearchDrop from "./SearchDrop";
+import User from "./User";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -78,12 +79,7 @@ const Header = () => {
                 <button className="text-xl mx-5 p-0 w-[40px] h-[40px] flex justify-center items-center btn btn-trans font-semibold">
                   <AiOutlineGlobal />
                 </button>
-                <button className="flex items-center btn btn-trans rounded-full border border-color">
-                  <BsList className="mr-3" />
-                  <div className="w-[30px] h-[30px] bg-gray-700 flex items-center justify-center text-white rounded-full">
-                    <FaUserAlt />
-                  </div>
-                </button>
+                <User />
               </div>
             </div>
             <div

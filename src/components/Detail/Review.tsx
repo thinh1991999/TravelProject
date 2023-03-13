@@ -1,79 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { Comment } from "react-loader-spinner";
 import { Review } from "../../interfaces/detail";
 import { useModal } from "../../share/customHooks";
 import Modal from "../Modal";
+import YourReview from "./YourReview";
 
-const ReviewCPN = ({ reviews }: { reviews: Review[] }) => {
+const ReviewCPN = () => {
   const [show, handleShow] = useModal();
+  const [loading, setLoading] = useState(true);
+
+  return (
+    <div className="py-10 flex justify-center items-center">
+      <Comment
+        visible={true}
+        height="80"
+        width="80"
+        ariaLabel="comment-loading"
+        wrapperStyle={{}}
+        wrapperClass="comment-wrapper"
+        color="#fff"
+        backgroundColor="#F4442E"
+      />
+    </div>
+  );
 
   return (
     <>
       <div className="py-5">
-        <h5 className="mb-3">4.86 · {reviews.length} reviews</h5>
-        <div className="row">
-          <div className="p-2 w-1/2 pr-20">
-            <div className="my-2 flex justify-between items-center">
-              <span className="text-lg">Cleanliness</span>
-              <div className="flex items-center">
-                <div className="w-[150px] h-[4px] bg-gray-400 relative rounded-sm overflow-hidden">
-                  <div
-                    className="absolute top-0 left-0  bottom-0 bg-black rounded-sm"
-                    style={{
-                      width: `${(3 / 5) * 100}%`,
-                    }}
-                  ></div>
-                </div>
-                <span className="font-bold ml-2">4.9</span>
-              </div>
-            </div>
-            <div className="my-2 flex justify-between items-center">
-              <span className="text-lg">Cleanliness</span>
-              <div className="flex items-center">
-                <div className="w-[150px] h-[4px] bg-gray-400 relative rounded-sm overflow-hidden">
-                  <div
-                    className="absolute top-0 left-0  bottom-0 bg-black rounded-sm"
-                    style={{
-                      width: `${(3 / 5) * 100}%`,
-                    }}
-                  ></div>
-                </div>
-                <span className="font-bold ml-2">4.9</span>
-              </div>
-            </div>
-          </div>
-          <div className="p-2 w-1/2 pr-20">
-            <div className="my-2 flex justify-between items-center">
-              <span className="text-lg">Cleanliness</span>
-              <div className="flex items-center">
-                <div className="w-[150px] h-[4px] bg-gray-400 relative rounded-sm overflow-hidden">
-                  <div
-                    className="absolute top-0 left-0  bottom-0 bg-black rounded-sm"
-                    style={{
-                      width: `${(3 / 5) * 100}%`,
-                    }}
-                  ></div>
-                </div>
-                <span className="font-bold ml-2">4.9</span>
-              </div>
-            </div>
-            <div className="my-2 flex justify-between items-center">
-              <span className="text-lg">Cleanliness</span>
-              <div className="flex items-center">
-                <div className="w-[150px] h-[4px] bg-gray-400 relative rounded-sm overflow-hidden">
-                  <div
-                    className="absolute top-0 left-0  bottom-0 bg-black rounded-sm"
-                    style={{
-                      width: `${(3 / 5) * 100}%`,
-                    }}
-                  ></div>
-                </div>
-                <span className="font-bold ml-2">4.9</span>
-              </div>
-            </div>
-          </div>
+        <div className="flex justify-between items-center">
+          <h5 className="mb-3">4.86 · 123 reviews</h5>
+          <button className="btn btn-primary">Your review</button>
         </div>
         <div className="row-big mt-10">
-          {reviews.map((rv) => {
+          {/* {reviews.map((rv) => {
             const { id, comments, reviewer, localizedDate } = rv;
             return (
               <div className="w-1/2 p-5 " key={id}>
@@ -105,10 +65,12 @@ const ReviewCPN = ({ reviews }: { reviews: Review[] }) => {
                 )}
               </div>
             );
-          })}
+          })} */}
         </div>
       </div>
-      <Modal isShow={show} setShow={handleShow}></Modal>
+      <Modal isShow={show} setShow={handleShow}>
+        <YourReview />
+      </Modal>
     </>
   );
 };

@@ -206,7 +206,10 @@ const AllImages = ({
 }: {
   show: boolean;
   setIsShowAll: Function;
-  imgs: string[];
+  imgs: {
+    publicUrl: string;
+    hint: string;
+  }[];
 }) => {
   const [images, setImages] = useState<
     | {
@@ -221,7 +224,7 @@ const AllImages = ({
     let timeout = setTimeout(() => {
       const newImgs = imgs.map((img) => {
         return {
-          src: img,
+          src: img.publicUrl,
         };
       });
       setImages(newImgs);

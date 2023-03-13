@@ -1,43 +1,30 @@
 export interface RoomDetail {
-  title: string;
-  propertyType: string;
-  location: string;
-  personCapacity: number;
-  imageUrl: string;
-  descriptionLanguage: string;
-  listingLat: number;
-  listingLng: number;
-  homeTier: number;
-  roomType: string;
-  visibleReviewCount: null;
-  valueRating: null;
-  locationRating: null;
-  pictureCount: number;
-  communicationRating: null;
-  checkinRating: null;
-  accuracyRating: null;
-  cleanlinessRating: null;
-  guestSatisfactionOverall: null;
-  allowsChildren: boolean;
-  allowsInfants: boolean;
-  allowsPets: boolean;
-  hostId: string;
-  hostName: string;
-  hostProfilePhotoUrl: string;
-  isHotelRatePlanEnabled: boolean;
-  isSuperhost: boolean;
-  maxNights: number;
-  minNights: number;
-  reviewsCount: string;
-  reviewsRating: string;
-  roomAndPropertyType: string;
-  barPrice: null;
-  canInstantBook: boolean;
-  price: WelcomePrice;
-  cancellationPolicies: WelcomeCancellationPolicy[];
-  overview: string[];
-  images: string[];
-  details: Detail[];
+  room: {
+    name: string;
+    description: string;
+    pricePerNight: number;
+    guests: number;
+    bedrooms: number;
+    livingRooms: number;
+    beds: number;
+    baths: number;
+    latitude: number;
+    longitude: number;
+    address: string;
+    propertyType: string;
+    amenities: string[];
+    categories: string[];
+    images: {
+      publicUrl: string;
+      hint: string;
+    }[];
+  };
+  owner: {
+    email: string;
+    firstName: string;
+    lastName: string;
+    profilePic: string;
+  };
 }
 
 export interface WelcomeCancellationPolicy {
@@ -323,4 +310,10 @@ export interface OnPressAction {
 
 export interface ShowMoreButton {
   title: string;
+}
+
+export interface CheckoutPrice {
+  accommodationCost: number;
+  accommodationCostFormatted: string;
+  accommodationCostTitle: string;
 }

@@ -1,29 +1,39 @@
 export interface Room {
-  id: string;
-  url: string;
-  deeplink: string;
-  position: number;
+  location: Location;
+  _id: string;
   name: string;
-  bathrooms: number;
+  description: string;
+  pricePerNight: number;
+  propertyType: string;
+  guests: number;
   bedrooms: number;
   beds: number;
-  city: string;
-  images: string[];
-  hostThumbnail: string;
-  isSuperhost: boolean;
-  rareFind: boolean;
-  lat: number;
-  lng: number;
-  persons: number;
-  reviewsCount: number;
+  baths: number;
+  amenities: string[];
+  images: Image[];
+  owner: Owner;
+  bookings: any[];
+  reviews: any[];
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
+}
+
+export interface Image {
+  publicUrl: string;
+  hint: string;
+}
+
+export interface Location {
   type: string;
-  userId: number;
+  coordinates: number[];
   address: string;
-  amenityIds: number[];
-  previewAmenities: any[];
-  cancelPolicy: string;
-  price: Price;
-  rating?: number;
+}
+
+export interface Owner {
+  _id: string;
+  firstName: string;
+  lastName: string;
 }
 
 export interface Price {
@@ -38,4 +48,26 @@ export interface GuestsITF {
   children: number;
   infants: number;
   pets: number;
+}
+
+export interface FiltersITF {
+  minPrice: number;
+  maxPrice: number;
+  bedRooms: number;
+  beds: number;
+  bathRooms: number;
+  propertyType: number[];
+  amenities: number[];
+}
+
+export interface Amenity {
+  name: string;
+  icon_url: string;
+  description: string;
+}
+
+export interface Category {
+  name: string;
+  icon_url: string;
+  description: string;
 }

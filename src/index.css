@@ -22,7 +22,8 @@
   body {
     font-size: 16px;
   }
-  input {
+  input,
+  textarea {
     @apply outline-none border-none bg-transparent;
   }
 }
@@ -30,7 +31,7 @@
 @tailwind components;
 
 .btn {
-  @apply px-4 py-2 rounded-md  flex justify-center items-center;
+  @apply px-4 py-2 rounded-md  flex justify-center items-center  first-letter:uppercase;
 }
 
 .btn-black {
@@ -116,7 +117,7 @@
   overflow: hidden;
 }
 
-.shadow {
+.shadow-box {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -137,12 +138,22 @@
 
 /* Custom swiper */
 
+.swiper:hover .swiper-button-next {
+  display: flex;
+}
+
+.swiper:hover .swiper-button-prev {
+  display: flex;
+}
+
 .swiper-button-next,
 .swiper-button-prev {
   width: 30px;
   height: 30px;
   background: white;
   border-radius: 50%;
+  display: none;
+  /* border: 1px solid black; */
 }
 
 .swiper-button-next:hover,
@@ -221,4 +232,43 @@ abbr:where([title]) {
 
 .react-calendar__navigation__label__divider {
   @apply hidden;
+}
+
+/* Animations */
+@keyframes rotate {
+  0%,
+  10% {
+    -webkit-transform: rotateY(0deg) rotateX(0deg);
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  15%,
+  20% {
+    -webkit-transform: rotateY(180deg) rotateX(0deg);
+    transform: rotateY(180deg) rotateX(0deg);
+  }
+  25%,
+  35% {
+    -webkit-transform: rotateY(180deg) rotateX(270deg);
+    transform: rotateY(180deg) rotateX(270deg);
+  }
+  40%,
+  50% {
+    -webkit-transform: rotateY(180deg) rotateX(90deg);
+    transform: rotateY(180deg) rotateX(90deg);
+  }
+  55%,
+  65% {
+    -webkit-transform: rotateY(-90deg) rotateX(90deg);
+    transform: rotateY(-90deg) rotateX(90deg);
+  }
+  70%,
+  80% {
+    -webkit-transform: rotateY(90deg) rotateX(90deg);
+    transform: rotateY(90deg) rotateX(90deg);
+  }
+  90%,
+  95% {
+    -webkit-transform: rotateY(0deg) rotateX(90deg);
+    transform: rotateY(0deg) rotateX(90deg);
+  }
 }
