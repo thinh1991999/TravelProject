@@ -13,6 +13,9 @@ import Profile from "./pages/Profile";
 import { fetchGlobalData } from "./store/slices/globalSlice";
 import { useAppDispatch, useAppSelector } from "./store/hook";
 import { InfinitySpin } from "react-loader-spinner";
+import Auth from "./pages/Auth";
+import Signin from "./components/Authen/Signin";
+import Signup from "./components/Authen/Signup";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +48,30 @@ const router = createBrowserRouter([
       <Layout showHeadSub={false}>
         <Profile />
       </Layout>
+    ),
+  },
+  {
+    path: "/authen/signin",
+    element: (
+      <Auth>
+        <Signin />
+      </Auth>
+    ),
+  },
+  {
+    path: "/authen/signin/:link",
+    element: (
+      <Auth>
+        <Signin />
+      </Auth>
+    ),
+  },
+  {
+    path: "/authen/signup",
+    element: (
+      <Auth>
+        <Signup />
+      </Auth>
     ),
   },
 ]);

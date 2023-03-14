@@ -71,3 +71,14 @@ export interface Category {
   icon_url: string;
   description: string;
 }
+
+export interface SignupITF {
+  email?: string;
+  password?: string;
+  firstName?: string;
+  lastName?: string;
+  address?: string;
+  description?: string;
+  phoneNumber?: string;
+  gender?: "male" | "female" | "other";
+}

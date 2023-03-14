@@ -26,6 +26,10 @@
   textarea {
     @apply outline-none border-none bg-transparent;
   }
+  input:focus,
+  textarea:focus {
+    @apply border-gray-500;
+  }
 }
 
 @tailwind components;
@@ -87,6 +91,14 @@
   );
 }
 
+.btn.btn-loading {
+  @apply cursor-not-allowed opacity-50;
+}
+
+.btn.btn-loading:hover {
+  @apply opacity-50;
+}
+
 .border-color {
   @apply border-solid border-gray-300;
 }
@@ -130,8 +142,21 @@
   @apply w-[1px] bg-gray-300;
 }
 
+.text_lines {
+  white-space: pre-line;
+}
+
 .loading {
   @apply bg-slate-300;
+}
+
+input.input-err,
+textarea.input-err {
+  @apply border-red-500;
+}
+
+label.label-title {
+  @apply font-semibold;
 }
 
 @tailwind utilities;

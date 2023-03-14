@@ -14,16 +14,44 @@ class ApiService {
     });
   }
 
-  getMethod(url: string, params?: object, isFlow?: boolean) {
+  getMethod(
+    url: string,
+    params?: object,
+    isFlow?: boolean,
+    isHandleError?: boolean
+  ) {
     this.axiosConfig = {
       params,
     };
     if (isFlow) {
-      return this.hanldeFlow(this.axios.get(url, this.axiosConfig), true);
+      return this.hanldeFlow(
+        this.axios.get(url, this.axiosConfig),
+        isFlow,
+        isHandleError
+      );
     }
     return this.axios.get(url, this.axiosConfig);
   }
-  hanldeFlow = (method: Promise<AxiosResponse<any, any>>, loading = true) => {
+
+  postMethod(
+    url: string,
+    data: object,
+    config?: AxiosRequestConfig,
+    isFlow?: boolean,
+    isHandleError?: boolean
+  ) {
+    return this.hanldeFlow(
+      this.axios.post(url, data, config),
+      isFlow,
+      isHandleError
+    );
+  }
+
+  hanldeFlow = (
+    method: Promise<AxiosResponse<any, any>>,
+    loading = true,
+    error = true
+  ) => {
     return new Promise((resolve, reject) => {
       method
         .then((res) => {
@@ -34,10 +62,8 @@ class ApiService {
           });
         })
         .catch((err) => {
-          // this.handleError(err);
-          reject({
-            err: err,
-          });
+          error && this.handleError(err);
+          reject(err);
         });
     });
   };

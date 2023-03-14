@@ -262,58 +262,19 @@ export interface Total {
 }
 
 export interface Review {
-  comments: string;
-  createdAt: Date;
-  disclaimer: null;
-  id: string;
-  localizedDate: string;
-  localizedReview: null;
-  language: string;
-  collectionTag: null;
-  response: null;
-  reviewee: Reviewee;
-  reviewer: Reviewer;
-  highlightedReviewSentence: null;
-  highlightReviewMentioned: null;
-  roomTypeListingTitle: null;
-  channel: null;
-  showMoreButton: ShowMoreButton;
-  reviewMediaItems: null;
+  _id: string;
   rating: number;
+  description: string;
+  room: string;
+  owner: Owner;
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
 }
 
-export interface Reviewee {
+export interface Owner {
+  _id: string;
   firstName: string;
-  id: string;
-  pictureUrl: string;
-}
-
-export interface Reviewer {
-  id: string;
-  firstName: string;
-  userProfilePicture: UserProfilePicture;
-  badges: any[];
-}
-
-export interface UserProfilePicture {
-  __typename: string;
-  baseUrl: string;
-  loggingEventData: null;
-  onPressAction: OnPressAction;
-}
-
-export interface OnPressAction {
-  __typename: string;
-  url: string;
-  userId: string;
-}
-
-export interface ShowMoreButton {
-  title: string;
-}
-
-export interface CheckoutPrice {
-  accommodationCost: number;
-  accommodationCostFormatted: string;
-  accommodationCostTitle: string;
+  lastName: string;
+  profilePic: string;
 }

@@ -7,6 +7,8 @@ export type GlobalState = {
   amenities: Amenity[];
   categories: Category[];
   mainLoading: boolean;
+  user: any | null;
+  token: string | null;
 };
 
 export type DetailState = {

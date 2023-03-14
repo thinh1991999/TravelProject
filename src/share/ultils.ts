@@ -1,3 +1,4 @@
+import { Review } from "../interfaces/detail";
 import { Room } from "../interfaces/global";
 
 export function getCenterMap(arr: Room[]) {
@@ -24,3 +25,10 @@ export function getCenterMap(arr: Room[]) {
     lng,
   };
 }
+
+export const getAverageRating = (reviews: Review[]) => {
+  const total = reviews.reduce((prev, curr) => {
+    return (prev += curr.rating);
+  }, 0);
+  return (total / reviews.length).toFixed(2);
+};

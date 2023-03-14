@@ -12,6 +12,8 @@ const initialState: GlobalState = {
   amenities: [],
   categories: [],
   mainLoading: true,
+  user: JSON.parse(localStorage.getItem("user") as any) || null,
+  token: JSON.parse(localStorage.getItem("token") as any) || null,
 };
 
 export const fetchGlobalData = createAsyncThunk(
@@ -50,6 +52,14 @@ export const globalSlice = createSlice({
     setCategories: (state, action: PayloadAction<Category[]>) => {
       state.categories = action.payload;
     },
+    setUser: (state, action: PayloadAction<any | null>) => {
+      localStorage.setItem("user", JSON.stringify(action.payload));
+      state.user = action.payload;
+    },
+    setToken: (state, action: PayloadAction<string | null>) => {
+      localStorage.setItem("token", JSON.stringify(action.payload));
+      state.token = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchGlobalData.pending, (state, action) => {
@@ -74,8 +84,14 @@ export const globalSlice = createSlice({
   },
 });
 
-export const { changeShowSearch, setSearchDrop, setAmenities, setCategories } =
-  globalSlice.actions;
+export const {
+  changeShowSearch,
+  setSearchDrop,
+  setAmenities,
+  setCategories,
+  setUser,
+  setToken,
+} = globalSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectCount = (state: RootState) => state.counter.value;

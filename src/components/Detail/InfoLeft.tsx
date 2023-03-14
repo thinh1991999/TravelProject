@@ -9,6 +9,8 @@ const InfoLeft = () => {
   if (!roomDetail) return <></>;
   const { firstName, lastName, profilePic } = roomDetail.owner;
   const { propertyType, description } = roomDetail.room;
+  console.log(description);
+
   return (
     <>
       <div className="py-4 flex justify-between items-center border-b border-color">
@@ -56,7 +58,7 @@ const InfoLeft = () => {
         </div>
       </div> */}
       <div className="py-4 border-b border-color">
-        <p>{description}</p>
+        <p className="text_lines ">{description}</p>
       </div>
       <div className="py-4 border-b border-color">
         <h4>Where you'll sleep</h4>
@@ -68,7 +70,7 @@ const InfoLeft = () => {
             {amenities.map((amenity, idx) => {
               const { name, icon_url } = amenity;
               return (
-                <div className="flex items-center w-1/2 p-4">
+                <div className="flex items-center w-1/2 p-4" key={idx}>
                   <img
                     src={icon_url}
                     alt=""

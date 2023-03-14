@@ -12,6 +12,7 @@ const Card = ({ data }: { data: Room }) => {
     _id,
     images,
     pricePerNight,
+    description,
     name,
     location: { address },
   } = data;
@@ -55,17 +56,17 @@ const Card = ({ data }: { data: Room }) => {
       <div className=" p-4">
         <div className="flex justify-between items-center">
           <h5 className="flex-1 one-line-max">{name}</h5>
-          {/* {rating && (
+          {1 && (
             <div className="w-[80px] flex justify-end items-center">
               <AiFillStar />
-              <span className="font-medium">{rating}</span>
+              <span className="font-normal ml-1">{1}</span>
             </div>
-          )} */}
+          )}
         </div>
         <div className="sub-gray my-1 one-line-max">{address}</div>
-        <div className="sub-gray my-1">Lorem, ipsum dolor.</div>
+        <div className="sub-gray my-1 one-line-max">{description}</div>
         <span className="mt-2">
-          {/* <span className="font-bold">${price.rate}</span> night */}
+          <span className="font-bold">${pricePerNight}</span> night
         </span>
       </div>
     </Link>
