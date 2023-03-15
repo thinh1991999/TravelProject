@@ -88,8 +88,8 @@ const Signin = () => {
   };
 
   return (
-    <div className="px-5 py-5 bg-white rounded-md shadow-md min-w-[500px]">
-      <h3>Sign in</h3>
+    <div className="px-5 py-5 bg-white rounded-md shadow-md sm:w-[500px] sm:h-auto w-full h-full">
+      <h3 className="sm:mt-0 mt-10">Sign in</h3>
       <form onSubmit={(e) => handleSubmit(e)} className="mt-5">
         <div className="flex flex-col my-3">
           <label htmlFor="">Email</label>

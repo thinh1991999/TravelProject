@@ -1,24 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import { TailSpin } from "react-loader-spinner";
 import { Link } from "react-router-dom";
-import { SignupITF } from "../../interfaces/global";
+import { SignupITF, UpdateITF } from "../../interfaces/global";
 import httpService from "../../services/httpService";
 import Validator from "../../share/validator";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { setUser } from "../../store/slices/globalSlice";
 import Mess from "../Mess";
 
 const rules = [
-  {
-    field: "email",
-    method: "isEmpty",
-    validWhen: false,
-    message: "This field is required",
-  },
-  {
-    field: "email",
-    method: "isEmail",
-    validWhen: true,
-    message: "This field is a email",
-  },
   {
     field: "firstName",
     method: "isEmpty",
@@ -56,30 +46,15 @@ const rules = [
     validWhen: false,
     message: "This field is required",
   },
-  {
-    field: "password",
-    method: "isEmpty",
-    validWhen: false,
-    message: "This field is required",
-  },
-  {
-    field: "password",
-    method: "isLength",
-    args: [{ min: 6, max: 10 }],
-    validWhen: true,
-    message: "Password must be at least 6 characters",
-  },
 ];
 
-const Signup = () => {
-  const [values, setValues] = useState<
-    SignupITF & {
-      cfPassword?: string;
-    }
-  >({
-    email: "",
-    password: "",
-    cfPassword: "",
+const Update = () => {
+  const disptach = useAppDispatch();
+
+  const user = useAppSelector((state) => state.global.user);
+  const token = useAppSelector((state) => state.global.token);
+
+  const [values, setValues] = useState<UpdateITF>({
     firstName: "",
     lastName: "",
     address: "",
@@ -87,11 +62,7 @@ const Signup = () => {
     phoneNumber: "",
     gender: "male",
   });
-  const [errors, setErrors] = useState<
-    SignupITF & {
-      cfPassword?: string;
-    }
-  >({});
+  const [errors, setErrors] = useState<UpdateITF>({});
   const [loading, setLoading] = useState<boolean>(false);
   const [mess, setMess] = useState({
     type: true,
@@ -100,17 +71,19 @@ const Signup = () => {
   const validator = useRef(new Validator(rules)).current;
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!token) return;
     setErrors(validator.validate(JSON.parse(JSON.stringify(values))));
-    if (validator.isValid && comparePw()) {
+    if (validator.isValid) {
       setLoading(true);
       httpService
-        .signup(values)
+        .updateProfile(values, token)
         .then((res) => {
+          const { message, user } = res.data;
+          disptach(setUser(user));
           setMess({
             type: true,
-            value: res.data.message,
+            value: message,
           });
-          hanldeClear();
           setLoading(false);
         })
         .catch((err) => {
@@ -136,20 +109,6 @@ const Signup = () => {
     });
   };
 
-  const hanldeClear = () => {
-    setValues({
-      email: "",
-      password: "",
-      cfPassword: "",
-      firstName: "",
-      lastName: "",
-      address: "",
-      description: "",
-      phoneNumber: "",
-      gender: "male",
-    });
-  };
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -166,43 +125,29 @@ const Signup = () => {
     });
   };
 
-  const comparePw = (): boolean => {
-    if (values.password !== values.cfPassword) {
-      setErrors({
-        ...errors,
-        cfPassword: "Comfirm password is not correct",
-      });
-      return false;
-    }
-    return true;
-  };
+  useLayoutEffect(() => {
+    if (!user) return;
+    const { firstName, lastName, address, description, phoneNumber, gender } =
+      user;
+    setValues({
+      address,
+      description,
+      firstName,
+      lastName,
+      gender,
+      phoneNumber,
+    });
+  }, [user]);
 
   return (
-    <div className="max-h-screen flex flex-col px-5 py-5 bg-white rounded-md shadow-md sm:w-[500px] sm:h-auto w-full h-full">
-      <h3 className="sm:mt-0 mt-10">Sign up</h3>
+    <div className="max-h-screen flex flex-col px-5 py-5 bg-white rounded-md shadow-md w-[500px]">
+      <h3>Update your profile</h3>
       <form
         onSubmit={(e) => handleSubmit(e)}
         className=" mt-5 w-full flex-1 overflow-y-auto"
       >
         <div className="w-full flex flex-wrap -m-2">
-          <div className="w-full flex flex-col p-2">
-            <label htmlFor="" className="label-title">
-              Email
-            </label>
-            <input
-              value={values.email}
-              onChange={(e) => handleChange(e)}
-              name="email"
-              onFocus={(e) => handleFocus(e)}
-              type="text"
-              placeholder="Enter your email"
-              className={`${
-                errors?.email ? "input-err" : ""
-              } py-2 px-3 border border-color rounded-sm mt-1 `}
-            />
-            {errors?.email && <p className="text-error mt-3">{errors.email}</p>}
-          </div>
-          <div className="w-full sm:w-1/2 flex flex-col p-2">
+          <div className="w-1/2 flex flex-col p-2">
             <label htmlFor="" className="label-title">
               First name
             </label>
@@ -221,7 +166,7 @@ const Signup = () => {
               <p className="text-error mt-3">{errors.firstName}</p>
             )}
           </div>
-          <div className="w-full sm:w-1/2 flex flex-col p-2">
+          <div className="w-1/2 flex flex-col p-2">
             <label htmlFor="" className="label-title">
               last name
             </label>
@@ -276,10 +221,10 @@ const Signup = () => {
               <p className="text-error mt-3">{errors.phoneNumber}</p>
             )}
           </div>
-          <div className="w-full flex flex-wrap p-2">
-            <label className="label-title block sm:w-auto w-full">Gender</label>
-            <div className="sm:w-auto w-full flex flex-1 justify-around">
-              <label htmlFor="male" className="cursor-pointer">
+          <div className="w-full flex  p-2">
+            <label className="label-title">Gender</label>
+            <div className="flex ml-10">
+              <label htmlFor="male" className="ml-5 mr-3 cursor-pointer">
                 Male
               </label>
               <input
@@ -291,7 +236,7 @@ const Signup = () => {
                 checked={values.gender === "male"}
                 onChange={(e) => handleCheckGender(e)}
               />
-              <label htmlFor="female" className="cursor-pointer">
+              <label htmlFor="female" className="ml-5 mr-3 cursor-pointer">
                 Female
               </label>
               <input
@@ -303,7 +248,7 @@ const Signup = () => {
                 checked={values.gender === "female"}
                 onChange={(e) => handleCheckGender(e)}
               />
-              <label htmlFor="other" className="cursor-pointer">
+              <label htmlFor="other" className="ml-5 mr-3 cursor-pointer">
                 Other
               </label>
               <input
@@ -336,44 +281,6 @@ const Signup = () => {
             )}
           </div>
           <div className="w-full flex flex-col p-2">
-            <label htmlFor="" className="label-title">
-              Password
-            </label>
-            <input
-              value={values.password}
-              onChange={(e) => handleChange(e)}
-              name="password"
-              onFocus={(e) => handleFocus(e)}
-              type="password"
-              placeholder="Enter your password"
-              className={`${
-                errors?.password ? "input-err" : ""
-              } py-2 px-3 border border-color rounded-sm mt-1 `}
-            />
-            {errors?.password && (
-              <p className="text-error mt-3">{errors.password}</p>
-            )}
-          </div>
-          <div className="w-full flex flex-col p-2">
-            <label htmlFor="" className="label-title">
-              Comfirm Password
-            </label>
-            <input
-              value={values.cfPassword}
-              onChange={(e) => handleChange(e)}
-              name="cfPassword"
-              onFocus={(e) => handleFocus(e)}
-              type="password"
-              placeholder="Comfirm your password"
-              className={`${
-                errors?.cfPassword ? "input-err" : ""
-              } py-2 px-3 border border-color rounded-sm mt-1 `}
-            />
-            {errors?.cfPassword && (
-              <p className="text-error mt-3">{errors.cfPassword}</p>
-            )}
-          </div>
-          <div className="w-full flex flex-col p-2">
             <Mess type={mess.type} value={mess.value} />
             {loading ? (
               <button
@@ -383,25 +290,13 @@ const Signup = () => {
                 <TailSpin height={30} width={30} color="#ccc" />
               </button>
             ) : (
-              <button className="btn btn-primary w-full">Sign up</button>
+              <button className="btn btn-primary w-full">Update</button>
             )}
           </div>
-        </div>
-
-        <div className="flex flex-col my-3">
-          <p className="text-sm">
-            Aready have an account?{" "}
-            <Link
-              to={"/authen/signin"}
-              className="text-primary hover:opacity-75"
-            >
-              Sign in now
-            </Link>
-          </p>
         </div>
       </form>
     </div>
   );
 };
 
-export default Signup;
+export default Update;

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 // import type { RootState } from "../../app/store";
 import { GlobalState } from "../../interfaces/redux";
-import { Amenity, Category } from "../../interfaces/global";
+import { Amenity, Category, User } from "../../interfaces/global";
 import httpService from "../../services/httpService";
 
 // Define the initial state using that type
@@ -52,7 +52,7 @@ export const globalSlice = createSlice({
     setCategories: (state, action: PayloadAction<Category[]>) => {
       state.categories = action.payload;
     },
-    setUser: (state, action: PayloadAction<any | null>) => {
+    setUser: (state, action: PayloadAction<User | null>) => {
       localStorage.setItem("user", JSON.stringify(action.payload));
       state.user = action.payload;
     },

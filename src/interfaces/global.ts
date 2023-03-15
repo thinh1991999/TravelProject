@@ -61,6 +61,7 @@ export interface FiltersITF {
 }
 
 export interface Amenity {
+  _id: string;
   name: string;
   icon_url: string;
   description: string;
@@ -81,4 +82,43 @@ export interface SignupITF {
   description?: string;
   phoneNumber?: string;
   gender?: "male" | "female" | "other";
+}
+
+export interface UpdateITF {
+  firstName?: string;
+  lastName?: string;
+  address?: string;
+  description?: string;
+  phoneNumber?: string;
+  gender?: "male" | "female" | "other";
+}
+
+export interface User {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  profilePic: string;
+  verified: boolean;
+  address: string;
+  description: string;
+  phoneNumber: string;
+  gender: "male" | "female" | "other";
+  listings: any[];
+  bookings: any[];
+  reviews: string[];
+  isHost: boolean;
+  isAdmin: boolean;
+  resetPwLink: null;
+  tokens: Token[];
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
+  hintPic: string;
+}
+
+export interface Token {
+  token: string;
+  _id: string;
 }

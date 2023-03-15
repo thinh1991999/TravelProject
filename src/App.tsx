@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Layout from "./components/Layout";
 import Detail from "./pages/Detail";
@@ -90,7 +92,12 @@ function App() {
       </div>
     );
   }
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </>
+  );
 }
 
 export default App;

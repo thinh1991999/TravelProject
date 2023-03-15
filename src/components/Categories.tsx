@@ -6,23 +6,30 @@ import httpService from "../services/httpService";
 import { useAppSelector } from "../store/hook";
 
 const Categories = () => {
-  // const [categories, setCategories] = useState<Category[]>([]);
   const categories = useAppSelector((state) => state.global.categories);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    // setLoading(true);
-    // httpService.getCategories().then((res) => {
-    //   setCategories(res.data.data);
-    //   setLoading(false);
-    // });
-  }, []);
 
   return (
     <Swiper
       modules={[Navigation]}
       spaceBetween={0}
       slidesPerView={12}
+      breakpoints={{
+        0: {
+          slidesPerView: 3,
+        },
+        426: {
+          slidesPerView: 4,
+        },
+        768: {
+          slidesPerView: 7,
+        },
+        1024: {
+          slidesPerView: 9,
+        },
+        1440: {
+          slidesPerView: 12,
+        },
+      }}
       navigation
       className="w-full h-full"
     >

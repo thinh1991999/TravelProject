@@ -20,7 +20,7 @@ const Card = ({ data }: { data: Room }) => {
   return (
     <Link
       to={`/detail/${_id}`}
-      className="w-full border border-color block rounded-md overflow-hidden  hover:-translate-y-10 animate"
+      className="w-full border border-color block rounded-md overflow-hidden animate"
     >
       <div className="w-full aspect-[1/0.9] ">
         <Swiper

@@ -6,7 +6,7 @@ import HeadDetail from "../components/Detail/HeadDetail";
 import Images from "../components/Detail/Images";
 import Info from "../components/Detail/Info";
 import Loading from "../components/Detail/Loading";
-import ReviewCpn from "../components/Detail/Review";
+import ReviewsCpn from "../components/Detail/Reviews";
 import { Review, RoomDetail } from "../interfaces/detail";
 import httpService from "../services/httpService";
 import { useAppDispatch } from "../store/hook";
@@ -44,7 +44,7 @@ const Detail = () => {
       <HeadDetail />
       <Images />
       <Info />
-      <ReviewCpn />
+      <ReviewsCpn />
     </div>
   );
 };

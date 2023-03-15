@@ -13,10 +13,9 @@ const Auth = ({ children }: { children: ReactElement }) => {
       navigate("/");
     }
   }, [navigate, user]);
-
   return (
     <div
-      className="w-screen h-screen bg-no-repeat bg-cover flex justify-center items-center "
+      className="w-screen h-screen overflow-hidden bg-no-repeat bg-cover flex justify-center items-center "
       style={{
         backgroundImage: `url(${bg})`,
       }}

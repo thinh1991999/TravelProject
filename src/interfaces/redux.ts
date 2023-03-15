@@ -1,5 +1,5 @@
 import { RoomDetail } from "./detail";
-import { Amenity, Category, Room } from "./global";
+import { Amenity, Category, Room, User } from "./global";
 
 export type GlobalState = {
   isSearchHeader: Boolean;
@@ -7,7 +7,7 @@ export type GlobalState = {
   amenities: Amenity[];
   categories: Category[];
   mainLoading: boolean;
-  user: any | null;
+  user: User | null;
   token: string | null;
 };
 

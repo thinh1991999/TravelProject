@@ -40,8 +40,36 @@ class ApiService {
     isFlow?: boolean,
     isHandleError?: boolean
   ) {
+    console.log(data);
     return this.hanldeFlow(
       this.axios.post(url, data, config),
+      isFlow,
+      isHandleError
+    );
+  }
+
+  putMethod(
+    url: string,
+    data: object,
+    config?: AxiosRequestConfig,
+    isFlow?: boolean,
+    isHandleError?: boolean
+  ) {
+    return this.hanldeFlow(
+      this.axios.put(url, data, config),
+      isFlow,
+      isHandleError
+    );
+  }
+
+  deleteMethod(
+    url: string,
+    config?: AxiosRequestConfig,
+    isFlow?: boolean,
+    isHandleError?: boolean
+  ) {
+    return this.hanldeFlow(
+      this.axios.delete(url, config),
       isFlow,
       isHandleError
     );

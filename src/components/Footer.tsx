@@ -8,7 +8,7 @@ const Footer = () => {
         {footerData.map((vl, idx) => {
           const { title, childs } = vl;
           return (
-            <div className="w-1/4 p-2" key={idx}>
+            <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2" key={idx}>
               <div className="">
                 <h4>{title}</h4>
                 <ul className="mt-5">

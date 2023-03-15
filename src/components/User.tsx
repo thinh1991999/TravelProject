@@ -42,7 +42,7 @@ const User = () => {
             <>
               <li>
                 <Link
-                  to={"/authen/signup"}
+                  to={"/profile"}
                   className="block py-2 px-3 font-semibold text-start cursor-pointer hover:bg-gray-300"
                 >
                   Profile

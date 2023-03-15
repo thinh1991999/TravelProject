@@ -37,7 +37,7 @@ const Home = () => {
       <div className={`row -m-3 ${showMap ? "h-0 overflow-hidden" : ""}`}>
         {data.map((vl) => {
           return (
-            <div key={vl._id} className="p-3 w-1/4">
+            <div key={vl._id} className="p-3 lg:w-1/4 md:w-1/3 sm:w-1/2 w-full">
               <Card data={vl} />
             </div>
           );

@@ -1,16 +1,14 @@
 import React from "react";
 import { useAppSelector } from "../../store/hook";
 import Calendar from "../Calendar";
+import Amenities from "./Amenities";
 
 const InfoLeft = () => {
   const roomDetail = useAppSelector((state) => state.detail.roomDetail);
-  const amenities = useAppSelector((state) => state.global.amenities);
 
   if (!roomDetail) return <></>;
   const { firstName, lastName, profilePic } = roomDetail.owner;
   const { propertyType, description } = roomDetail.room;
-  console.log(description);
-
   return (
     <>
       <div className="py-4 flex justify-between items-center border-b border-color">
@@ -64,27 +62,7 @@ const InfoLeft = () => {
         <h4>Where you'll sleep</h4>
       </div>
       <div className="py-4 border-b border-color">
-        <h4>What this place offers</h4>
-        <div className="mt-5">
-          <div className="flex flex-wrap -m-4">
-            {amenities.map((amenity, idx) => {
-              const { name, icon_url } = amenity;
-              return (
-                <div className="flex items-center w-1/2 p-4" key={idx}>
-                  <img
-                    src={icon_url}
-                    alt=""
-                    className="w-[25px] h-[25px] mr-2"
-                  />
-                  <span>Beach access – Beachfront</span>
-                </div>
-              );
-            })}
-          </div>
-          <button className="btn btn-white btn-border rounded-lg mt-8 font-bold">
-            Show all 27 amenities
-          </button>
-        </div>
+        <Amenities />
       </div>
       <div className="py-4 border-b border-color">
         <h4>Select check-in date</h4>

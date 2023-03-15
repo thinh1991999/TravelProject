@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { TailSpin } from "react-loader-spinner";
+import { Review } from "../../interfaces/detail";
 import httpService from "../../services/httpService";
 import { useAppSelector } from "../../store/hook";
 import Mess from "../Mess";
@@ -8,9 +9,13 @@ import Mess from "../Mess";
 const YourReview = ({
   id,
   setShow,
+  isUpdate = false,
+  review,
 }: {
-  id: string | undefined;
+  id?: string | undefined;
   setShow: Function;
+  isUpdate?: boolean;
+  review?: Review;
 }) => {
   const token = useAppSelector((state) => state.global.token);
   const [rating, setRating] = useState<number>(3);
@@ -49,10 +54,49 @@ const YourReview = ({
       });
   };
 
+  const handleUpdate = (e: any) => {
+    e.preventDefault();
+    if (review === undefined || token === null) return;
+    setLoading(true);
+    httpService
+      .updateReview(
+        {
+          rating,
+          description: des,
+        },
+        review._id,
+        token
+      )
+      .then((res) => {
+        setMess({
+          type: true,
+          value: res.data.message || "Something error",
+        });
+        setLoading(false);
+        // setShow(false);
+      })
+      .catch((err) => {
+        setMess({
+          type: false,
+          value: err.response?.data.error || "Something error",
+        });
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    if (!isUpdate || !review) return;
+    setRating(review.rating);
+    setDes(review.description);
+  }, [isUpdate, review]);
+
   return (
     <div className="p-5 min-w-[700px]">
       <button>Click</button>
-      <form action="" onSubmit={(e) => handleSubmit(e)}>
+      <form
+        action=""
+        onSubmit={(e) => (isUpdate ? handleUpdate(e) : handleSubmit(e))}
+      >
         <div className="my-5">
           <h5 className="text-center mb-2">How was your stay at ABC's place</h5>
           <div className="flex justify-center">
@@ -64,7 +108,10 @@ const YourReview = ({
               { id: 5, title: "Great" },
             ].map((vl) => {
               return (
-                <div className="flex flex-col justify-center items-center cursor-pointer mx-2">
+                <div
+                  key={vl.id}
+                  className="flex flex-col justify-center items-center cursor-pointer mx-2"
+                >
                   <input
                     type="radio"
                     key={vl.id}
@@ -118,7 +165,9 @@ const YourReview = ({
               <TailSpin height={30} width={30} color="#ccc" />
             </button>
           ) : (
-            <button className="btn btn-primary w-full">Submit</button>
+            <button className="btn btn-primary w-full">
+              {isUpdate ? "Update" : "Submit"}{" "}
+            </button>
           )}
         </div>
       </form>
