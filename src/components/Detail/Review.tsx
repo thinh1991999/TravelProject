@@ -20,13 +20,6 @@ const ReviewCPN = ({ data }: { data: Review }) => {
 
   const [showSetting, setShowSetting] = useState<boolean>(false);
 
-  const {
-    description,
-    rating,
-    createdAt,
-    owner: { _id, firstName, lastName, profilePic },
-  } = data;
-  const time = moment(createdAt).calendar();
   const btnRef = useRef<HTMLButtonElement>(null);
   const settingRef = useRef<HTMLDivElement>(null);
 
@@ -44,7 +37,17 @@ const ReviewCPN = ({ data }: { data: Review }) => {
   };
 
   const hanldeLike = () => {
-    console.log(1);
+    if (!token) return;
+    httpService.likeReview(token, data._id).then((res) => {
+      console.log(res);
+    });
+  };
+
+  const hanldeDislike = () => {
+    if (!token) return;
+    httpService.dislikeReview(token, data._id).then((res) => {
+      console.log(res);
+    });
   };
 
   useEffect(() => {
@@ -62,6 +65,20 @@ const ReviewCPN = ({ data }: { data: Review }) => {
     };
   }, [showSetting, settingRef]);
 
+  if (!data) return <></>;
+
+  const {
+    description,
+    rating,
+    createdAt,
+    owner: { _id, firstName, lastName, profilePic },
+    likes,
+    likeCount,
+    dislikes,
+    dislikeCount,
+  } = data;
+
+  const time = moment(createdAt).calendar();
   return (
     <>
       <div
@@ -92,15 +109,22 @@ const ReviewCPN = ({ data }: { data: Review }) => {
               <div className="flex items-center text-xl">
                 <button
                   onClick={() => hanldeLike()}
-                  className="hover:text-primary animate"
+                  className={`${
+                    user && likes.includes(user._id) ? "text-primary" : ""
+                  } hover:text-primary animate `}
                 >
                   <AiFillLike />
                 </button>
-                <span className="text-sm">0</span>
-                <button className="hover:text-primary animate ml-3">
+                <span className="text-sm">{likeCount}</span>
+                <button
+                  onClick={() => hanldeDislike()}
+                  className={`${
+                    user && dislikes.includes(user._id) ? "text-primary" : ""
+                  } hover:text-primary animate ml-3`}
+                >
                   <AiFillDislike />
                 </button>
-                <span className="text-sm">0</span>
+                <span className="text-sm">{dislikeCount}</span>
               </div>
             </div>
           </div>

@@ -159,6 +159,40 @@ class HttpService {
     );
   }
 
+  likeReview(token: string, id: string): Promise<any> {
+    return apiService.postMethod(
+      `/review/like`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          id,
+        },
+      },
+      false,
+      false
+    );
+  }
+
+  dislikeReview(token: string, id: string): Promise<any> {
+    return apiService.postMethod(
+      `/review/dislike`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          id,
+        },
+      },
+      false,
+      false
+    );
+  }
+
   // End handle review
 }
 

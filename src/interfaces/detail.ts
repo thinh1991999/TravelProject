@@ -269,6 +269,10 @@ export interface Review {
   owner: Owner;
   createdAt: Date;
   updatedAt: Date;
+  likeCount: number;
+  likes: string[];
+  dislikeCount: number;
+  dislikes: string[];
   __v: number;
 }
 
