@@ -38,7 +38,7 @@ const Categories = () => {
           <SwiperSlide key={idx} className="w-full cursor-pointer ">
             <div className="opacity-50 hover:opacity-100 flex flex-col justify-center items-center ">
               <img
-                src={category.icon_url}
+                src={category.icon_url.publicUrl}
                 className="w-[30px] h-[30px] object-cover"
                 alt=""
               />

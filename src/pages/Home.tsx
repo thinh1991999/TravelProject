@@ -10,24 +10,58 @@ import { AiOutlineClose, AiOutlineUnorderedList } from "react-icons/ai";
 import Map from "../components/Map";
 import Cube from "../components/Cube";
 import httpService from "../services/httpService";
+import { useSearchParams } from "react-router-dom";
+import { removeNull } from "../share/ultils";
 
 const Home = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [data, setData] = useState<Room[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [showMap, setShowmap] = useState<boolean>(false);
 
   useEffect(() => {
+    const minPrice = searchParams.get("minPrice");
+    const maxPrice = searchParams.get("maxPrice");
+    const beds = searchParams.get("beds");
+    const bedRooms = searchParams.get("bedRooms");
+    const bathRooms = searchParams.get("bathRooms");
+    const amenities = searchParams.getAll("amenities");
+    const properties = searchParams.getAll("properties");
+    const places = searchParams.getAll("places");
+    const params = {
+      minPrice,
+      maxPrice,
+      beds,
+      bedRooms,
+      bathRooms,
+      amenities,
+      properties,
+      places,
+    };
     setLoading(true);
     httpService
-      .getRoomAll()
+      .getRoomFilter(removeNull(params))
       .then((res) => {
-        setData(res.data.result.docs);
+        console.log(res);
+
+        setData(res.data.rooms);
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        setData([]);
       });
+  }, [searchParams]);
+
+  useEffect(() => {
+    // setSearchParams(
+    //   {
+    //     keyword: "123",
+    //   },
+    //   { replace: true }
+    // );
   }, []);
+  useEffect(() => {}, [searchParams]);
   if (loading) return <Loading />;
   return (
     <>

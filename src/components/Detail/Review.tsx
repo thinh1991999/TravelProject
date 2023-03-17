@@ -72,9 +72,9 @@ const ReviewCPN = ({ data }: { data: Review }) => {
     rating,
     createdAt,
     owner: { _id, firstName, lastName, profilePic },
-    likes,
+    likes = [],
     likeCount,
-    dislikes,
+    dislikes = [],
     dislikeCount,
   } = data;
 

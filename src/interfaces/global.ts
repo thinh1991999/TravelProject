@@ -50,26 +50,49 @@ export interface GuestsITF {
   pets: number;
 }
 
+export type EachRoomType = "ALL" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | "MAX";
+
 export interface FiltersITF {
   minPrice: number;
   maxPrice: number;
-  bedRooms: number;
-  beds: number;
-  bathRooms: number;
-  propertyType: number[];
-  amenities: number[];
+  bedRooms: EachRoomType;
+  beds: EachRoomType;
+  bathRooms: EachRoomType;
 }
 
 export interface Amenity {
   _id: string;
   name: string;
-  icon_url: string;
+  icon_url: {
+    publicUrl: string;
+    hint: string;
+  };
   description: string;
 }
 
 export interface Category {
+  _id: string;
   name: string;
-  icon_url: string;
+  icon_url: {
+    publicUrl: string;
+    hint: string;
+  };
+  description: string;
+}
+
+export interface PropertyType {
+  _id: string;
+  name: string;
+  icon_url: {
+    publicUrl: string;
+    hint: string;
+  };
+  description: string;
+}
+
+export interface TypePlace {
+  _id: string;
+  name: string;
   description: string;
 }
 

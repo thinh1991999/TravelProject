@@ -29,8 +29,12 @@ const Amenities = () => {
             const { name, icon_url } = amenity;
             return (
               <div className="flex items-center w-1/2 p-4" key={idx}>
-                <img src={icon_url} alt="" className="w-[25px] h-[25px] mr-2" />
-                <span>Beach access – Beachfront</span>
+                <img
+                  src={icon_url.publicUrl}
+                  alt=""
+                  className="w-[25px] h-[25px] mr-2"
+                />
+                <span>{name}</span>
               </div>
             );
           })}
@@ -59,7 +63,7 @@ const Amenities = () => {
                       key={idx}
                     >
                       <img
-                        src={icon_url}
+                        src={icon_url.publicUrl}
                         alt=""
                         className="w-[25px] h-[25px] mr-2"
                       />
@@ -85,7 +89,11 @@ const Amenities = () => {
                       key={idx}
                     >
                       <div className="w-[25px] h-[25px] mr-2 relative">
-                        <img src={icon_url} alt="" className="w-full h-full" />
+                        <img
+                          src={icon_url.publicUrl}
+                          alt=""
+                          className="w-full h-full"
+                        />
                         <div className="absolute w-[30px] h-[2px] bg-black rotate-45 bottom-1/2"></div>
                       </div>
                       <div className="flex flex-col">

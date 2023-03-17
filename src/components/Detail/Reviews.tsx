@@ -44,8 +44,6 @@ const ReviewsCPN = () => {
       });
     });
     newSocket.on("update_review", (values) => {
-      console.log(values);
-
       const { id, vlChange } = values;
       setData((prev) => {
         const idx = prev.findIndex((vl) => vl._id === id);

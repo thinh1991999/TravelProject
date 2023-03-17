@@ -140,3 +140,63 @@ export const guestSearch: {
     tail: "pets",
   },
 ];
+
+export const filtersNB: {
+  title: string | number;
+  hint: "ALL" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | "MAX";
+}[] = [
+  {
+    title: "Any",
+    hint: "ALL",
+  },
+  {
+    title: 1,
+    hint: 1,
+  },
+  {
+    title: 2,
+    hint: 2,
+  },
+  {
+    title: 3,
+    hint: 3,
+  },
+  {
+    title: 4,
+    hint: 4,
+  },
+  {
+    title: 5,
+    hint: 5,
+  },
+  {
+    title: 6,
+    hint: 6,
+  },
+  {
+    title: 7,
+    hint: 7,
+  },
+  {
+    title: "8+",
+    hint: "MAX",
+  },
+];
+
+export const filtersRoom: {
+  title: string;
+  hint: "beds" | "bedRooms" | "bathRooms";
+}[] = [
+  {
+    title: "Bedrooms",
+    hint: "bedRooms",
+  },
+  {
+    title: "Beds",
+    hint: "beds",
+  },
+  {
+    title: "Bathrooms",
+    hint: "bathRooms",
+  },
+];

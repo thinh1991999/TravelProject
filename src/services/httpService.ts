@@ -81,6 +81,10 @@ class HttpService {
     return apiService.getMethod(`/room/all`);
   }
 
+  getRoomFilter(params: object): Promise<any> {
+    return apiService.getMethod(`/room/filter`, params);
+  }
+
   // Begin handle review
   getReview(id: number) {
     return axios.get(
@@ -194,6 +198,26 @@ class HttpService {
   }
 
   // End handle review
+
+  // Begin handle property type
+  getPropertyType(): Promise<any> {
+    return apiService.getMethod(`/propertyType/all`);
+  }
+  // End handle property type
+
+  // Begin handle type place
+  getTypePlaces(): Promise<any> {
+    return apiService.getMethod(`/typePlace/all`);
+  }
+  // End handle type place
+
+  // Begin handle filter
+  getFiltersCount(data: object): Promise<any> {
+    return apiService.getMethod(`/room/filter/count`, {
+      ...data,
+    });
+  }
+  // End handle type place
 }
 
 export default new HttpService();
