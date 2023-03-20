@@ -44,7 +44,7 @@ const Left = () => {
   };
 
   return (
-    <div className="pr-10">
+    <div className="md:pr-10">
       <div className="py-10 shadow-box flex justify-center flex-col items-center">
         <div className="w-[150px] h-[150px] rounded-full overflow-hidden">
           <img

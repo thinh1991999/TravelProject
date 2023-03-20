@@ -20,21 +20,12 @@ const Detail = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
 
   useEffect(() => {
-    // setLoading(true);
-    // const call1 = httpService.getDetail(id || "");
-    // const call2 = httpService.getReview(1);
-    // Promise.all([call1, call2]).then((res) => {
-    //   setData(res[0].data.data);
-    //   setReviews(res[1].data.data);
-    //   setLoading(false);
-    // });
     setLoading(true);
     httpService.getDetail(id || "").then((res) => {
       dispatch(setRoomDetail(res.data.room));
       setLoading(false);
     });
   }, [id, dispatch]);
-
   if (loading) {
     return <Loading />;
   }

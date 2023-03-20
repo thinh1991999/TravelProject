@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineClose } from "react-icons/ai";
 import { TailSpin } from "react-loader-spinner";
 import { Review } from "../../interfaces/detail";
 import httpService from "../../services/httpService";
@@ -91,12 +91,11 @@ const YourReview = ({
   }, [isUpdate, review]);
 
   return (
-    <div className="p-5 min-w-[700px]">
-      <button>Click</button>
-      <form
-        action=""
-        onSubmit={(e) => (isUpdate ? handleUpdate(e) : handleSubmit(e))}
-      >
+    <div className="p-5 w-auto lg:min-w-[700px]">
+      <button className="btn btn-x" onClick={() => setShow(false)}>
+        <AiOutlineClose />
+      </button>
+      <form onSubmit={(e) => (isUpdate ? handleUpdate(e) : handleSubmit(e))}>
         <div className="my-5">
           <h5 className="text-center mb-2">How was your stay at ABC's place</h5>
           <div className="flex justify-center">
@@ -125,7 +124,7 @@ const YourReview = ({
                   ></input>
                   <label htmlFor={vl.id.toString()} className="cursor-pointer">
                     <AiFillStar
-                      className={` text-5xl ${
+                      className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl ${
                         vl.id <= rating ? "text-primary" : ""
                       }`}
                     />
@@ -133,7 +132,7 @@ const YourReview = ({
                   <span
                     className={` ${
                       vl.id === rating ? "text-primary" : "text-gray-500"
-                    } font-semibold`}
+                    } font-semibold text-base md:text-lg `}
                   >
                     {vl.title}
                   </span>

@@ -28,7 +28,7 @@ const Amenities = () => {
           {data.map((amenity, idx) => {
             const { name, icon_url } = amenity;
             return (
-              <div className="flex items-center w-1/2 p-4" key={idx}>
+              <div className="flex items-center w-full lg:w-1/2 p-4" key={idx}>
                 <img
                   src={icon_url.publicUrl}
                   alt=""
@@ -47,7 +47,7 @@ const Amenities = () => {
         </button>
       </div>
       <Modal isShow={show} setShow={handleShow}>
-        <div className="p-5 min-w-[800px] h-[500px] flex flex-col">
+        <div className="p-5 w-auto lg:min-w-[800px] h-[500px] flex flex-col">
           <button onClick={() => handleShow(false)}>
             <AiOutlineClose />
           </button>

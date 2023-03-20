@@ -18,6 +18,7 @@ import { InfinitySpin } from "react-loader-spinner";
 import Auth from "./pages/Auth";
 import Signin from "./components/Authen/Signin";
 import Signup from "./components/Authen/Signup";
+import Notifications from "./pages/Notifications";
 
 const router = createBrowserRouter([
   {
@@ -61,19 +62,19 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/authen/signin/:link",
-    element: (
-      <Auth>
-        <Signin />
-      </Auth>
-    ),
-  },
-  {
     path: "/authen/signup",
     element: (
       <Auth>
         <Signup />
       </Auth>
+    ),
+  },
+  {
+    path: "/notifications",
+    element: (
+      <Layout showHeadSub={false}>
+        <Notifications />
+      </Layout>
     ),
   },
 ]);

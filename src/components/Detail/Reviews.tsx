@@ -44,6 +44,7 @@ const ReviewsCPN = () => {
       });
     });
     newSocket.on("update_review", (values) => {
+      console.log(values.vlChange);
       const { id, vlChange } = values;
       setData((prev) => {
         const idx = prev.findIndex((vl) => vl._id === id);
@@ -78,7 +79,7 @@ const ReviewsCPN = () => {
   return (
     <>
       <div className="py-5">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-wrap justify-between items-center">
           <h5 className="mb-3">
             {getAverageRating(data)} · {data.length} reviews
           </h5>
@@ -106,7 +107,7 @@ const ReviewsCPN = () => {
         <div className="row-big mt-10">
           {data.map((rv) => {
             return (
-              <div className="w-1/2 p-5 " key={rv._id}>
+              <div className="w-full lg:w-1/2 p-5 " key={rv._id}>
                 <ReviewCPN data={rv} />
               </div>
             );

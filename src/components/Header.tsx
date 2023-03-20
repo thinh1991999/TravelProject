@@ -40,29 +40,35 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0  z-50">
+      <header className="fixed top-0 left-0 right-0 z-50 lg:text-base text-sm">
         <div className="border-t border-b border-color bg-white">
           <div
             className={`${
               isSearchHeader ? `h-[200px]` : `h-[100px]`
-            } container m-auto transition-all ease-linear duration-200`}
+            } container m-auto transition-all ease-linear duration-200 `}
           >
             <div className="flex justify-between items-center py-4">
-              <div className="w-3/12">
+              <div className="md:w-3/12">
                 <Logo />
               </div>
-              <div className="flex-1  flex justify-center">
+              <div className="flex-1 flex justify-center">
                 <div className=" flex justify-center py-3 px-5 shadow rounded-full hv-sd cursor-pointer">
-                  <div className="px-4" onClick={() => hanldleShowSearch()}>
+                  <div
+                    className="px-4 overflow-ellipsis whitespace-nowrap flex-center"
+                    onClick={() => hanldleShowSearch()}
+                  >
                     Anywhere
                   </div>
                   <div className="div-bd"></div>
-                  <div className="px-4" onClick={() => hanldleShowSearch()}>
+                  <div
+                    className="px-4 overflow-ellipsis whitespace-nowrap flex-center"
+                    onClick={() => hanldleShowSearch()}
+                  >
                     Any week
                   </div>
                   <div className="div-bd"></div>
                   <div
-                    className="px-4 sub-gray"
+                    className="px-4 sub-gray overflow-ellipsis whitespace-nowrap flex-center"
                     onClick={() => hanldleShowSearch()}
                   >
                     Add guests
@@ -72,11 +78,11 @@ const Header = () => {
                   </button>
                 </div>
               </div>
-              <div className="w-3/12 flex items-center">
-                <button className="btn btn-trans font-semibold">
+              <div className="md:w-3/12 flex items-center justify-between">
+                <button className="btn btn-trans font-semibold whitespace-nowrap">
                   Your home
                 </button>
-                <button className="text-xl mx-5 p-0 w-[40px] h-[40px] flex justify-center items-center btn btn-trans font-semibold">
+                <button className="whitespace-nowrap text-xl mx-5 p-0 w-[40px] h-[40px] flex justify-center items-center btn btn-trans font-semibold">
                   <AiOutlineGlobal />
                 </button>
                 <User />

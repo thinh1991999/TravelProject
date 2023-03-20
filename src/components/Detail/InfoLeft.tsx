@@ -12,10 +12,8 @@ const InfoLeft = () => {
   return (
     <>
       <div className="py-4 flex justify-between items-center border-b border-color">
-        <div className="">
-          <h3>
-            {propertyType} hosted by {lastName + " " + firstName}
-          </h3>
+        <div className="flex-1">
+          <h4>Private room in villa hosted by {lastName + " " + firstName}</h4>
           <div className="flex items-center mt-2">
             {/* {overview.map((ov, idx) => {
                   return (
@@ -31,7 +29,7 @@ const InfoLeft = () => {
                 })} */}
           </div>
         </div>
-        <button className="w-[40px] h-[40px] rounded-full overflow-hidden">
+        <button className="w-[40px] h-[40px] rounded-full overflow-hidden shadow-md">
           <img src={profilePic} alt="" className="w-full h-full object-cover" />
         </button>
       </div>
@@ -68,7 +66,12 @@ const InfoLeft = () => {
         <h4>Select check-in date</h4>
         <span>Add your travel dates for exact pricing</span>
         <div className="mt-5">
-          <Calendar />
+          <div className="lg:block hidden">
+            <Calendar showDouble={true} />
+          </div>
+          <div className="lg:hidden block">
+            <Calendar showDouble={false} />
+          </div>
         </div>
       </div>
     </>

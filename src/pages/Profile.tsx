@@ -14,10 +14,10 @@ const Profile = () => {
   if (!user) return <></>;
   return (
     <div className="flex flex-wrap -m-2">
-      <div className="p-2 w-1/3">
+      <div className="p-2 w-full md:w-1/3">
         <Left />
       </div>
-      <div className="p-2 w-2/3">
+      <div className="p-2 w-full md:w-2/3">
         <Right />
       </div>
     </div>

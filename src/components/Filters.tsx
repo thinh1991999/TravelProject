@@ -157,9 +157,9 @@ const Filters = ({ handleShow }: { handleShow: Function }) => {
   useEffect(() => {
     const minPrice = Number(searchParams.get("minPrice")) || 0;
     const maxPrice = Number(searchParams.get("maxPrice")) || 1000;
-    const beds = (searchParams.get("beds") as EachRoomType) || "ANY";
-    const bedRooms = (searchParams.get("bedRooms") as EachRoomType) || "ANY";
-    const bathRooms = (searchParams.get("bathRooms") as EachRoomType) || "ANY";
+    const beds = (searchParams.get("beds") as EachRoomType) || "ALL";
+    const bedRooms = (searchParams.get("bedRooms") as EachRoomType) || "ALL";
+    const bathRooms = (searchParams.get("bathRooms") as EachRoomType) || "ALL";
     const amenities = searchParams.getAll("amenities") || [];
     const properties = searchParams.getAll("properties") || [];
     const places = searchParams.getAll("places") || [];
@@ -177,7 +177,7 @@ const Filters = ({ handleShow }: { handleShow: Function }) => {
 
   return (
     <>
-      <div className="w-[800px] h-[700px] flex flex-col">
+      <div className="min-w-[320px] lg:w-[800px] h-[700px] flex flex-col">
         <div className="flex  items-center justify-between px-4 py-3 border-b border-color">
           <button
             className="btn btn-trans btn-x text-xl font-bold w-[50px] h-[50px]"
@@ -224,7 +224,7 @@ const Filters = ({ handleShow }: { handleShow: Function }) => {
                       {types.map((t) => {
                         const isCheck = placeVl.includes(t._id);
                         return (
-                          <div key={t._id} className="w-1/2 p-2">
+                          <div key={t._id} className="w-full md:w-1/2 p-2">
                             <div className="flex">
                               <div className="w-[50px]">
                                 <input
@@ -266,7 +266,7 @@ const Filters = ({ handleShow }: { handleShow: Function }) => {
                                   values[item.hint] === vl.hint
                                     ? "bg-black text-white"
                                     : ""
-                                } px-5 py-2 mx-2 rounded-full border border-color hover:border-black`}
+                                }  px-5 py-2 m-2 rounded-full border border-color hover:border-black`}
                                 onClick={() => {
                                   setValues({
                                     ...values,
@@ -293,7 +293,7 @@ const Filters = ({ handleShow }: { handleShow: Function }) => {
                         icon_url: { publicUrl },
                       } = p;
                       return (
-                        <div className="p-2 w-1/4">
+                        <div className="p-2 md:w-1/4 sm:w-1/2 w-full">
                           <div
                             onClick={() => handleChooseProperty(_id)}
                             className={`${
@@ -319,7 +319,7 @@ const Filters = ({ handleShow }: { handleShow: Function }) => {
                       if (!allAmen && idx > 5) return <></>;
                       const isCheck = amenitiesVl.includes(amen._id);
                       return (
-                        <div className="w-1/2 p-2" key={amen._id}>
+                        <div className="w-full sm:w-1/2 p-2" key={amen._id}>
                           <input
                             type="checkbox"
                             name="amenities"
@@ -358,7 +358,7 @@ const Filters = ({ handleShow }: { handleShow: Function }) => {
               </button>
               <button
                 onClick={() => handleShowAll()}
-                className="btn  text-lg font-bold px-8 py-3 rounded-md bg-black text-white"
+                className="btn text-base px-5 py-2 md:text-lg font-bold md:px-8 md:py-3 rounded-md bg-black text-white"
               >
                 {count > 0 ? (
                   <span>Show {count} stays</span>

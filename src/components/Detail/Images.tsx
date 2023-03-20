@@ -12,8 +12,8 @@ const Images = () => {
   const { images } = roomDetail.room;
   return (
     <>
-      <div className="my-3 rounded-xl overflow-hidden flex relative h-[calc(60vh_-_64px)]">
-        <div className="w-2/4 h-full ">
+      <div className="my-3 rounded-xl overflow-hidden flex relative h-[300px] lg:h-[calc(60vh_-_64px)]">
+        <div className="w-full md:w-2/4 h-full ">
           <div
             className=" cursor-pointer h-full"
             onClick={() => setIsShowAll(true)}
@@ -29,7 +29,7 @@ const Images = () => {
         {/* <div className="w-2/4 flex justify-center items-center">
           <Cube size={300} imgs={imgs} />
         </div> */}
-        <div className="w-1/4 h-full pl-4">
+        <div className="md:block hidden w-1/4 h-full pl-4">
           {images.slice(1, 3).map((img, idx) => {
             return (
               <div className={`h-1/2 ${idx === 1 ? "pt-4" : ""}`} key={idx}>
@@ -48,7 +48,7 @@ const Images = () => {
             );
           })}
         </div>
-        <div className="w-1/4 h-full pl-4">
+        <div className="md:block hidden w-1/4 h-full pl-4">
           {images.slice(3, 5).map((img, idx) => {
             return (
               <div className={`h-1/2 ${idx === 1 ? "pt-4" : ""}`} key={idx}>

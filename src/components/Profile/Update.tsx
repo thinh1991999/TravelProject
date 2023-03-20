@@ -140,14 +140,14 @@ const Update = () => {
   }, [user]);
 
   return (
-    <div className="max-h-screen flex flex-col px-5 py-5 bg-white rounded-md shadow-md w-[500px]">
+    <div className="max-h-screen flex flex-col md:p-5 p-2 bg-white rounded-md shadow-md md:w-[500px]">
       <h3>Update your profile</h3>
       <form
         onSubmit={(e) => handleSubmit(e)}
         className=" mt-5 w-full flex-1 overflow-y-auto"
       >
         <div className="w-full flex flex-wrap -m-2">
-          <div className="w-1/2 flex flex-col p-2">
+          <div className="w-full md:w-1/2 flex flex-col p-2">
             <label htmlFor="" className="label-title">
               First name
             </label>
@@ -166,7 +166,7 @@ const Update = () => {
               <p className="text-error mt-3">{errors.firstName}</p>
             )}
           </div>
-          <div className="w-1/2 flex flex-col p-2">
+          <div className="w-full md:w-1/2 flex flex-col p-2">
             <label htmlFor="" className="label-title">
               last name
             </label>
@@ -221,9 +221,9 @@ const Update = () => {
               <p className="text-error mt-3">{errors.phoneNumber}</p>
             )}
           </div>
-          <div className="w-full flex  p-2">
+          <div className="w-full flex flex-wrap  p-2">
             <label className="label-title">Gender</label>
-            <div className="flex ml-10">
+            <div className="flex justify-around flex-1">
               <label htmlFor="male" className="ml-5 mr-3 cursor-pointer">
                 Male
               </label>

@@ -7,7 +7,7 @@ const HeadDetail = () => {
   if (!roomDetail) return <></>;
   return (
     <div>
-      <h2>{roomDetail.room.name}</h2>
+      <h2 className="lg:text-4xl text-3xl">{roomDetail.room.name}</h2>
       <div className="flex items-center mt-2">
         <div className="flex items-center">
           <AiFillStar />

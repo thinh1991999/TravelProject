@@ -68,6 +68,7 @@ const ReviewCPN = ({ data }: { data: Review }) => {
   if (!data) return <></>;
 
   const {
+    _id: rvId,
     description,
     rating,
     createdAt,
@@ -92,6 +93,7 @@ const ReviewCPN = ({ data }: { data: Review }) => {
               <img src={profilePic} alt={""} className="w-full h-full" />
             </div>
             <div className="ml-3">
+              <span>{rvId}</span>
               <div className="flex">
                 {[1, 2, 3, 4, 5].map((vl) => {
                   return (

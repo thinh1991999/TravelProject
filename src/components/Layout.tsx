@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import Categories from "./Categories";
 import Footer from "./Footer";
 import Header from "./Header";
+import HeaderMobile from "./HeaderMobile";
 import HeaderSub from "./HeaderSub";
 
 const Layout = ({
@@ -13,7 +14,12 @@ const Layout = ({
 }) => {
   return (
     <div className="min-h-screen">
-      <Header />
+      <div className="md:block hidden">
+        <Header />
+      </div>
+      <div className="md:hidden block">
+        <HeaderMobile />
+      </div>
       {showHeadSub && <HeaderSub />}
       <main
         className={`${
