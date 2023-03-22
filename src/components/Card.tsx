@@ -5,6 +5,7 @@ import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { Room } from "../interfaces/global";
 import { Link } from "react-router-dom";
 import { MyImage } from "./MyImage";
+import { getAverageRating } from "../share/ultils";
 
 // install Swiper modules
 const Card = ({ data }: { data: Room }) => {
@@ -15,8 +16,9 @@ const Card = ({ data }: { data: Room }) => {
     description,
     name,
     location: { address },
+    reviews,
   } = data;
-
+  const avgRating = getAverageRating(reviews);
   return (
     <Link
       to={`/detail/${_id}`}
@@ -56,10 +58,10 @@ const Card = ({ data }: { data: Room }) => {
       <div className=" p-4">
         <div className="flex justify-between items-center">
           <h5 className="flex-1 one-line-max">{name}</h5>
-          {1 && (
+          {avgRating && (
             <div className="w-[80px] flex justify-end items-center">
               <AiFillStar />
-              <span className="font-normal ml-1">{1}</span>
+              <span className="font-normal ml-1">{avgRating}</span>
             </div>
           )}
         </div>

@@ -23,8 +23,6 @@ export function getCenterMap(arr: Room[]) {
 }
 
 export const getAverageRating = (reviews: Review[]) => {
-  console.log(reviews);
-
   if (reviews.length === 0) return 0;
   const total = reviews.reduce((prev, curr) => {
     return (prev += curr.rating);

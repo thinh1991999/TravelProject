@@ -36,9 +36,9 @@ const FilterBtn = ({ handleShow }: { handleShow: Function }) => {
     >
       <BsFilter /> <span className="ml-1">Filters</span>
       {count > 0 && (
-        <div className="flex justify-center items-center w-[20px] h-[20px] rounded-full bg-black text-white absolute -top-2 -right-2">
+        <span className="flex justify-center items-center w-[20px] h-[20px] rounded-full bg-black text-white absolute -top-2 -right-2">
           <span className="text-sm">{count}</span>
-        </div>
+        </span>
       )}
     </button>
   );

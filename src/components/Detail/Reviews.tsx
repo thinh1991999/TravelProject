@@ -13,6 +13,7 @@ import httpService from "../../services/httpService";
 import { useAppSelector } from "../../store/hook";
 import { getAverageRating } from "../../share/ultils";
 import ReviewCPN from "./Review";
+import { API_URL } from "../../share/constant";
 
 const ReviewsCPN = () => {
   const location = useLocation();
@@ -27,11 +28,19 @@ const ReviewsCPN = () => {
   useEffect(() => {
     if (id === undefined) return;
     setLoading(true);
-    httpService.getDetailReview(id).then((res) => {
-      setData(res.data.result.docs);
-      setLoading(false);
-    });
-    const newSocket = io("http://localhost:8000/reviews");
+    httpService
+      .getDetailReview(id)
+      .then((res) => {
+        setData(res.data.result.docs);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+
+        setData([]);
+        setLoading(false);
+      });
+    const newSocket = io(`${API_URL}reviews`);
     newSocket.emit("join_room", id);
     newSocket.on("new_review", (newReview) => {
       setData((prev) => {

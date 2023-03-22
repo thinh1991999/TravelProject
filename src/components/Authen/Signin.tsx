@@ -150,6 +150,12 @@ const Signin = () => {
               Sign up now
             </Link>
           </p>
+          <Link
+            className="text-sm text-red-700 hover:opacity-70"
+            to={"/authen/forgot-password"}
+          >
+            Forgot password
+          </Link>
         </div>
       </form>
     </div>

@@ -19,6 +19,9 @@ import Auth from "./pages/Auth";
 import Signin from "./components/Authen/Signin";
 import Signup from "./components/Authen/Signup";
 import Notifications from "./pages/Notifications";
+import Verify from "./components/Authen/Verify";
+import ForgotPw from "./components/Authen/ForgotPw";
+import ResetPw from "./components/Authen/ResetPw";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +69,30 @@ const router = createBrowserRouter([
     element: (
       <Auth>
         <Signup />
+      </Auth>
+    ),
+  },
+  {
+    path: "/authen/verify",
+    element: (
+      <Auth>
+        <Verify />
+      </Auth>
+    ),
+  },
+  {
+    path: "/authen/forgot-password",
+    element: (
+      <Auth>
+        <ForgotPw />
+      </Auth>
+    ),
+  },
+  {
+    path: "/authen/reset-pw",
+    element: (
+      <Auth>
+        <ResetPw />
       </Auth>
     ),
   },

@@ -1,11 +1,12 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { API_URL } from "../share/constant";
 
 class ApiService {
   axios: AxiosInstance;
   axiosConfig?: AxiosRequestConfig;
   constructor() {
     this.axios = axios.create({
-      baseURL: "http://localhost:8000",
+      baseURL: API_URL,
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

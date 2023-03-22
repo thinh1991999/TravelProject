@@ -14,8 +14,47 @@ class HttpService {
     return apiService.postMethod(`/user/create`, data, {}, false, false);
   }
 
+  verifyEmail(token: string | null): Promise<any> {
+    return apiService.postMethod(
+      `/user/verify/email`,
+      {},
+      {
+        params: {
+          token,
+        },
+      },
+      false,
+      false
+    );
+  }
+
   signin(data: { email: string; password: string }): Promise<any> {
     return apiService.postMethod(`/user/login`, data, {}, false, false);
+  }
+
+  forgotPw(email: string): Promise<any> {
+    return apiService.postMethod(
+      `/user/forgot/pw`,
+      {
+        email,
+      },
+      {},
+      false,
+      false
+    );
+  }
+
+  resetPwLink(token: string | null, newPw: string): Promise<any> {
+    return apiService.postMethod(
+      `/user/reset/pw/link`,
+      {
+        token,
+        newPw,
+      },
+      {},
+      false,
+      false
+    );
   }
 
   logout(token: string): Promise<any> {

@@ -12,7 +12,7 @@ const HeaderMobile = () => {
     <>
       <div className="fixed top-0 left-0 right-0 z-50 bg-white">
         <div className="container m-auto h-[100px] flex items-center ">
-          <button className="flex items-center px-3 py-1 rounded-full w-full border border-color shadow-box text-sm">
+          <div className="flex items-center px-3 py-1 rounded-full w-full border border-color shadow-box text-sm">
             <div className="text-2xl mr-2">
               <AiOutlineSearch />
             </div>
@@ -25,7 +25,7 @@ const HeaderMobile = () => {
               </div>
             </div>
             <FilterBtn handleShow={handleShow} />
-          </button>
+          </div>
         </div>
       </div>
       <Modal isShow={show} setShow={handleShow}>

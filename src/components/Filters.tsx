@@ -255,7 +255,7 @@ const Filters = ({ handleShow }: { handleShow: Function }) => {
                   <h5 className="font-medium">Rooms and beds</h5>
                   {filtersRoom.map((item) => {
                     return (
-                      <div className="my-5">
+                      <div className="my-5" key={item.hint}>
                         <span className="font-medium">{item.title}</span>
                         <div className="mt-3">
                           {filtersNB.map((vl, idx) => {
