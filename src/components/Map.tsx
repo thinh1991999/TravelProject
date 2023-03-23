@@ -22,7 +22,7 @@ const Map = ({ data }: { data: Room[] }) => {
         gestureHandling: "greedy",
       }}
     >
-      {data.map((item, index) => {
+      {/* {data.map((item, index) => {
         const { coordinates } = item.location;
         return (
           <Marker
@@ -32,7 +32,7 @@ const Map = ({ data }: { data: Room[] }) => {
             data={item}
           />
         );
-      })}
+      })} */}
     </GoogleMapReact>
   );
 };

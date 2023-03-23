@@ -22,6 +22,20 @@ import Notifications from "./pages/Notifications";
 import Verify from "./components/Authen/Verify";
 import ForgotPw from "./components/Authen/ForgotPw";
 import ResetPw from "./components/Authen/ResetPw";
+import BecomeHost from "./pages/BecomeHost";
+import AboutPlace from "./components/BecomeHost/AboutPlace";
+import Structure from "./components/BecomeHost/Structure";
+import PrivacyType from "./components/BecomeHost/PrivacyType";
+import Location from "./components/BecomeHost/Location";
+import FloorPlan from "./components/BecomeHost/FloorPlan";
+import StandOut from "./components/BecomeHost/StandOut";
+import Amenities from "./components/BecomeHost/Amenities";
+import Photos from "./components/BecomeHost/Photos";
+import Title from "./components/BecomeHost/Title";
+import Description from "./components/BecomeHost/Description";
+import FinishSetup from "./components/BecomeHost/FinishSetup";
+import Price from "./components/BecomeHost/Price";
+import Done from "./components/BecomeHost/Done";
 
 const router = createBrowserRouter([
   {
@@ -94,6 +108,154 @@ const router = createBrowserRouter([
       <Auth>
         <ResetPw />
       </Auth>
+    ),
+  },
+  {
+    path: "/become-a-host/about-your-place",
+    element: (
+      <BecomeHost next="/become-a-host/structure" level={0}>
+        <AboutPlace />
+      </BecomeHost>
+    ),
+  },
+  {
+    path: "/become-a-host/structure",
+    element: (
+      <BecomeHost
+        back="/become-a-host/about-your-place"
+        next="/become-a-host/privacy-type"
+        level={1}
+      >
+        <Structure />
+      </BecomeHost>
+    ),
+  },
+  {
+    path: "/become-a-host/privacy-type",
+    element: (
+      <BecomeHost
+        back="/become-a-host/structure"
+        next="/become-a-host/location"
+        level={2}
+      >
+        <PrivacyType />
+      </BecomeHost>
+    ),
+  },
+  {
+    path: "/become-a-host/location",
+    element: (
+      <BecomeHost
+        back="/become-a-host/privacy-type"
+        next="/become-a-host/floor-plan"
+        level={3}
+      >
+        <Location />
+      </BecomeHost>
+    ),
+  },
+  {
+    path: "/become-a-host/floor-plan",
+    element: (
+      <BecomeHost
+        back="/become-a-host/location"
+        next="/become-a-host/stand-out"
+        level={4}
+      >
+        <FloorPlan />
+      </BecomeHost>
+    ),
+  },
+  {
+    path: "/become-a-host/stand-out",
+    element: (
+      <BecomeHost
+        back="/become-a-host/floor-plan"
+        next="/become-a-host/amenities"
+        level={5}
+      >
+        <StandOut />
+      </BecomeHost>
+    ),
+  },
+  {
+    path: "/become-a-host/amenities",
+    element: (
+      <BecomeHost
+        back="/become-a-host/stand-out"
+        next="/become-a-host/photos"
+        level={6}
+      >
+        <Amenities />
+      </BecomeHost>
+    ),
+  },
+  {
+    path: "/become-a-host/photos",
+    element: (
+      <BecomeHost
+        back="/become-a-host/amenities"
+        next="/become-a-host/title"
+        level={7}
+      >
+        <Photos />
+      </BecomeHost>
+    ),
+  },
+  {
+    path: "/become-a-host/title",
+    element: (
+      <BecomeHost
+        back="/become-a-host/photos"
+        next="/become-a-host/description"
+        level={8}
+      >
+        <Title />
+      </BecomeHost>
+    ),
+  },
+  {
+    path: "/become-a-host/description",
+    element: (
+      <BecomeHost
+        back="/become-a-host/title"
+        next="/become-a-host/finish-setup"
+        level={9}
+      >
+        <Description />
+      </BecomeHost>
+    ),
+  },
+  {
+    path: "/become-a-host/finish-setup",
+    element: (
+      <BecomeHost
+        back="/become-a-host/description"
+        next="/become-a-host/price"
+        level={10}
+      >
+        <FinishSetup />
+      </BecomeHost>
+    ),
+  },
+  {
+    path: "/become-a-host/price",
+    element: (
+      <BecomeHost
+        back="/become-a-host/finish-setup"
+        next="/become-a-host/done"
+        level={11}
+      >
+        <Price />
+      </BecomeHost>
+    ),
+  },
+  {
+    path: "/become-a-host/done",
+    element: (
+      <BecomeHost back="/become-a-host/price" level={12}>
+        <Done />
+      </BecomeHost>
     ),
   },
   {

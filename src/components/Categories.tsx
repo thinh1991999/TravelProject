@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Category } from "../interfaces/global";
-import httpService from "../services/httpService";
 import { useAppSelector } from "../store/hook";
 
 const Categories = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const categories = useAppSelector((state) => state.global.categories);
   const idCurrent = searchParams.get("category");
-
   const handleChangeCate = (id: string) => {
     searchParams.set("category", id);
     setSearchParams(searchParams, {
@@ -52,8 +48,8 @@ const Categories = () => {
           >
             <div
               className={`${
-                idCurrent === category._id ? "opacity-100" : ""
-              } opacity-50 hover:opacity-100 flex flex-col justify-center items-center `}
+                idCurrent === category._id ? "opacity-100" : "opacity-50"
+              }  hover:opacity-100 flex flex-col justify-center items-center `}
             >
               <img
                 src={category.icon_url.publicUrl}

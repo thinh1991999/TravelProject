@@ -8,8 +8,12 @@ export interface RoomDetail {
     livingRooms: number;
     beds: number;
     baths: number;
-    latitude: number;
-    longitude: number;
+    location: {
+      type: string;
+      address: string;
+      coordinates: number[];
+    };
+    reviews: any[];
     address: string;
     propertyType: string;
     amenities: string[];

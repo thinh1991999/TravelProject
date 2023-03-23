@@ -6,6 +6,7 @@ import HeadDetail from "../components/Detail/HeadDetail";
 import Images from "../components/Detail/Images";
 import Info from "../components/Detail/Info";
 import Loading from "../components/Detail/Loading";
+import MapPlace from "../components/Detail/MapPlace";
 import ReviewsCpn from "../components/Detail/Reviews";
 import { Review, RoomDetail } from "../interfaces/detail";
 import httpService from "../services/httpService";
@@ -36,6 +37,7 @@ const Detail = () => {
       <Images />
       <Info />
       <ReviewsCpn />
+      <MapPlace />
     </div>
   );
 };

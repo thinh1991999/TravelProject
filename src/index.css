@@ -41,11 +41,11 @@
 }
 
 .btn {
-  @apply px-4 py-2 rounded-md  flex justify-center items-center  first-letter:uppercase;
+  @apply px-4 py-2 rounded-md  flex justify-center items-center  first-letter:uppercase hover:opacity-70;
 }
 
 .btn-black {
-  @apply bg-gray-800 text-white rounded-full px-6 py-2;
+  @apply bg-black text-white rounded-full px-6 py-2;
 }
 
 .btn-icon {
@@ -309,5 +309,16 @@ abbr:where([title]) {
   95% {
     -webkit-transform: rotateY(0deg) rotateX(90deg);
     transform: rotateY(0deg) rotateX(90deg);
+  }
+}
+
+@keyframes moveTop {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

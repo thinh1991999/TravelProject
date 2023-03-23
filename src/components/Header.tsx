@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { AiOutlineGlobal, AiOutlineSearch } from "react-icons/ai";
 import { BsList } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { changeShowSearch, setSearchDrop } from "../store/slices/globalSlice";
 import Logo from "./Logo";
@@ -79,9 +80,12 @@ const Header = () => {
                 </div>
               </div>
               <div className="md:w-3/12 flex items-center justify-between">
-                <button className="btn btn-trans font-semibold whitespace-nowrap">
+                <Link
+                  to={"/become-a-host/about-your-place"}
+                  className="btn btn-trans font-semibold whitespace-nowrap"
+                >
                   Your home
-                </button>
+                </Link>
                 <button className="whitespace-nowrap text-xl mx-5 p-0 w-[40px] h-[40px] flex justify-center items-center btn btn-trans font-semibold">
                   <AiOutlineGlobal />
                 </button>

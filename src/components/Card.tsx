@@ -40,7 +40,6 @@ const Card = ({ data }: { data: Room }) => {
           {images.map((img, idx) => {
             return (
               <SwiperSlide key={idx} className="w-full">
-                {/* <img src={img} className="w-full h-full object-cover" alt="" /> */}
                 <MyImage
                   image={{
                     alt: "",
@@ -58,11 +57,13 @@ const Card = ({ data }: { data: Room }) => {
       <div className=" p-4">
         <div className="flex justify-between items-center">
           <h5 className="flex-1 one-line-max">{name}</h5>
-          {avgRating && (
+          {avgRating ? (
             <div className="w-[80px] flex justify-end items-center">
               <AiFillStar />
               <span className="font-normal ml-1">{avgRating}</span>
             </div>
+          ) : (
+            <></>
           )}
         </div>
         <div className="sub-gray my-1 one-line-max">{address}</div>

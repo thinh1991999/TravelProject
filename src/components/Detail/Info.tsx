@@ -14,6 +14,7 @@ import AllImages from "./AllImages";
 import Checkout from "./Checkout";
 import Images from "./Images";
 import InfoLeft from "./InfoLeft";
+import MapPlace from "./MapPlace";
 
 const Info = () => {
   // const amenities = useAppSelector((state) => state.global.amenities);
