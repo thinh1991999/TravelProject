@@ -1,7 +1,7 @@
 import moment from "moment";
 import React, { useState, useRef, useEffect } from "react";
 import { AiFillStar, AiOutlineDown, AiOutlineUp } from "react-icons/ai";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CheckoutPrice } from "../../interfaces/global";
 import { GuestsEnum } from "../../interfaces/redux";
 import httpService from "../../services/httpService";
@@ -179,6 +179,7 @@ const Main = () => {
 };
 
 const Info = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const adults = useAppSelector((state) => state.detail.adults);
   const children = useAppSelector((state) => state.detail.children);
@@ -187,6 +188,10 @@ const Info = () => {
   const checkin = useAppSelector((state) => state.detail.checkin);
   const checkout = useAppSelector((state) => state.detail.checkout);
   const [data, setData] = useState<CheckoutPrice | null>(null);
+
+  const handleReserve = () => {
+    // navigate()
+  };
 
   useEffect(() => {
     if (checkin && checkout) {
@@ -209,7 +214,12 @@ const Info = () => {
   if (checkin && checkout) {
     return (
       <>
-        <button onClick={() => {}} className="btn btn-primary w-full mt-5">
+        <button
+          onClick={() => {
+            handleReserve();
+          }}
+          className="btn btn-primary w-full mt-5"
+        >
           Reserve
         </button>
         <p className="mt-3 text-center">You won't be charged yet</p>
