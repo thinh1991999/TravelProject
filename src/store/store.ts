@@ -1,7 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import detailSlice from "./slices/detailSlice";
 import globalSlice from "./slices/globalSlice";
 import searchSlice from "./slices/searchSlice";
+
 // ...
 
 export const store = configureStore({
@@ -10,6 +11,10 @@ export const store = configureStore({
     detail: detailSlice,
     search: searchSlice,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

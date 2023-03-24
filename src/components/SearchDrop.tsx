@@ -43,7 +43,7 @@ const SearchDrop = () => {
           left: "unset",
           right: "0px",
         });
-        setElement(<Guests size="350px" />);
+        // setElement(<Guests size="350px" />);
         break;
       default:
         break;

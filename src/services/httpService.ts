@@ -257,6 +257,16 @@ class HttpService {
     });
   }
   // End handle type place
+
+  // Begin handle checkout
+
+  getPrice(data: object): Promise<any> {
+    return apiService.getMethod(`/checkout/price`, {
+      ...data,
+    });
+  }
+
+  // End handle checkout
 }
 
 export default new HttpService();

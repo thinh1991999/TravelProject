@@ -145,3 +145,10 @@ export interface Token {
   token: string;
   _id: string;
 }
+
+export interface CheckoutPrice {
+  price: number;
+  days: number;
+  total: number;
+  tax: number;
+}

@@ -22,7 +22,7 @@ const Right = () => {
   };
 
   useEffect(() => {
-    setCenter(getCenterMap(data));
+    // setCenter(getCenterMap(data));
   }, [data]);
 
   return (

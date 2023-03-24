@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { AiFillDislike, AiFillLike, AiFillStar } from "react-icons/ai";
+import { useState, useEffect, lazy, Suspense } from "react";
 import io from "socket.io-client";
 import { Comment } from "react-loader-spinner";
-import { BsThreeDots } from "react-icons/bs";
-import moment from "moment";
 import { Review } from "../../interfaces/detail";
 import { useModal } from "../../share/customHooks";
-import Modal from "../Modal";
-import YourReview from "./YourReview";
-import { Link, useLocation, useParams, useRoutes } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import httpService from "../../services/httpService";
 import { useAppSelector } from "../../store/hook";
 import { getAverageRating } from "../../share/ultils";
 import ReviewCPN from "./Review";
 import { API_URL } from "../../share/constant";
+
+const Modal = lazy(() => import("../Modal"));
+const YourReview = lazy(() => import("./YourReview"));
 
 const ReviewsCPN = () => {
   const location = useLocation();
@@ -123,9 +121,11 @@ const ReviewsCPN = () => {
           })}
         </div>
       </div>
-      <Modal isShow={show} setShow={handleShow}>
-        <YourReview id={id} setShow={handleShow} />
-      </Modal>
+      <Suspense>
+        <Modal isShow={show} setShow={handleShow}>
+          <YourReview id={id} setShow={handleShow} />
+        </Modal>
+      </Suspense>
     </>
   );
 };

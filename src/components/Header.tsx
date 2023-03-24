@@ -81,7 +81,7 @@ const Header = () => {
               </div>
               <div className="md:w-3/12 flex items-center justify-between">
                 <Link
-                  to={"/become-a-host/about-your-place"}
+                  to={"/hosting"}
                   className="btn btn-trans font-semibold whitespace-nowrap"
                 >
                   Your home

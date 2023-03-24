@@ -68,15 +68,24 @@ const Home = () => {
       <div className={`w-full ${showMap ? "h-[600px]" : "h-0"}`}>
         <Map data={data} />
       </div>
-      <div className={`row -m-3 ${showMap ? "h-0 overflow-hidden" : ""}`}>
-        {data.map((vl) => {
-          return (
-            <div key={vl._id} className="p-3 lg:w-1/4 md:w-1/3 sm:w-1/2 w-full">
-              <Card data={vl} />
-            </div>
-          );
-        })}
-      </div>
+      {data.length > 0 ? (
+        <div className={`row -m-3 ${showMap ? "h-0 overflow-hidden" : ""}`}>
+          {data.map((vl) => {
+            return (
+              <div
+                key={vl._id}
+                className="p-3 lg:w-1/4 md:w-1/3 sm:w-1/2 w-full"
+              >
+                <Card data={vl} />
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="py-10">
+          <h3>Nothing to see</h3>
+        </div>
+      )}
       <button
         onClick={() => {
           setShowmap(!showMap);

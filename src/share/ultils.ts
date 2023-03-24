@@ -1,3 +1,4 @@
+import moment from "moment";
 import { Review } from "../interfaces/detail";
 import { Room } from "../interfaces/global";
 
@@ -55,4 +56,20 @@ export const removeNull = (obj: any) => {
     }
   });
   return obj;
+};
+
+export const getTime = (time: any) => {
+  return moment(time).format("DD/MM/YYYY");
+};
+
+export const getGuests = (
+  adults: number,
+  children: number,
+  infants: number,
+  pets: number
+) => {
+  const guestsT = `${adults + children} guests`;
+  const infantsT = infants ? `,${infants} infants` : "";
+  const petsT = pets ? `,${pets} pets` : "";
+  return guestsT + infantsT + petsT;
 };

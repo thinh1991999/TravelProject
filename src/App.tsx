@@ -1,20 +1,20 @@
 import { useEffect } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { ToastContainer } from "react-toastify";
+import { InfinitySpin } from "react-loader-spinner";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import { useAppDispatch, useAppSelector } from "./store/hook";
+import { fetchGlobalData } from "./store/slices/globalSlice";
+
 import Layout from "./components/Layout";
 import Detail from "./pages/Detail";
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Profile from "./pages/Profile";
-import { fetchGlobalData } from "./store/slices/globalSlice";
-import { useAppDispatch, useAppSelector } from "./store/hook";
-import { InfinitySpin } from "react-loader-spinner";
 import Auth from "./pages/Auth";
 import Signin from "./components/Authen/Signin";
 import Signup from "./components/Authen/Signup";
@@ -36,6 +36,9 @@ import Description from "./components/BecomeHost/Description";
 import FinishSetup from "./components/BecomeHost/FinishSetup";
 import Price from "./components/BecomeHost/Price";
 import Done from "./components/BecomeHost/Done";
+import LayoutHosting from "./components/LayoutHosting";
+import Listing from "./pages/Listing";
+import Hosting from "./pages/Hosting";
 
 const router = createBrowserRouter([
   {
@@ -259,6 +262,22 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/hosting",
+    element: (
+      <LayoutHosting>
+        <Hosting />
+      </LayoutHosting>
+    ),
+  },
+  {
+    path: "/hosting/listing",
+    element: (
+      <LayoutHosting showFooter={false}>
+        <Listing />
+      </LayoutHosting>
+    ),
+  },
+  {
     path: "/notifications",
     element: (
       <Layout showHeadSub={false}>
@@ -271,10 +290,10 @@ const router = createBrowserRouter([
 function App() {
   const dispatch = useAppDispatch();
   const mainLoading = useAppSelector((state) => state.global.mainLoading);
+
   useEffect(() => {
     dispatch(fetchGlobalData());
   }, [dispatch]);
-
   if (mainLoading) {
     return (
       <div className="fixed top-0 left-0 right-0 bottom-0 bg-white flex justify-center items-center">

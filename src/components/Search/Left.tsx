@@ -17,8 +17,8 @@ const Left = () => {
     <div className="row">
       {data.map((item) => {
         return (
-          <div className="w-1/3 p-2" key={item.id}>
-            <div onMouseEnter={() => handleHover(item.id)}>
+          <div className="w-1/3 p-2" key={item._id}>
+            <div onMouseEnter={() => handleHover(item._id)}>
               <Card data={item} />
             </div>
           </div>

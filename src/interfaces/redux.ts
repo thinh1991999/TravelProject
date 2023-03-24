@@ -17,10 +17,11 @@ export type DetailState = {
   children: number;
   infants: number;
   pets: number;
-  checkin: number | null;
-  checkout: number | null;
+  checkin: Date | null;
+  checkout: Date | null;
   list: any;
   roomDetail: RoomDetail | null;
+  rating: string | 0;
 };
 
 export type SearchState = {

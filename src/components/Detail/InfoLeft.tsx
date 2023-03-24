@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { useModal } from "../../share/customHooks";
@@ -5,6 +6,7 @@ import { useAppSelector } from "../../store/hook";
 import Calendar from "../Calendar";
 import Modal from "../Modal";
 import Amenities from "./Amenities";
+import CalenderDetail from "./CalenderDetail";
 
 const InfoLeft = () => {
   const roomDetail = useAppSelector((state) => state.detail.roomDetail);
@@ -84,16 +86,7 @@ const InfoLeft = () => {
         <Amenities />
       </div>
       <div className="py-4 border-b border-color">
-        <h4>Select check-in date</h4>
-        <span>Add your travel dates for exact pricing</span>
-        <div className="mt-5">
-          <div className="lg:block hidden">
-            <Calendar showDouble={true} />
-          </div>
-          <div className="lg:hidden block">
-            <Calendar showDouble={false} />
-          </div>
-        </div>
+        <CalenderDetail />
       </div>
       <Modal isShow={show} setShow={handleShow}>
         <div className="lg:w-[700px] max-h-[700px] p-5 flex flex-col">
