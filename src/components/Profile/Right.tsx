@@ -5,15 +5,16 @@ import { useModal } from "../../share/customHooks";
 import { useAppSelector } from "../../store/hook";
 import Modal from "../Modal";
 import Update from "./Update";
+import { User } from "../../interfaces/global";
 
-const Right = () => {
+const Right = ({ data, setIsReset }: { data?: User; setIsReset: Function }) => {
   const [show, handleShow] = useModal(false);
-  const user = useAppSelector((state) => state.global.user);
 
-  if (!user) return <></>;
+  if (!data) return <></>;
 
-  const { firstName, lastName, createdAt, description } = user;
-
+  const { firstName, lastName, createdAt, description, email, phoneNumber,gender,address } =
+    data;
+  
   return (
     <>
       <div>
@@ -30,11 +31,38 @@ const Right = () => {
         </button>
         <div className="mt-5">
           <h3>About</h3>
-          <p className="my-3">{description}</p>
+          <div className="my-5 flex items-center">
+            <span className="font-bold mr-3 w-[150px]">Email:</span>
+            <span>{email}</span>
+          </div>
+          <div className="my-5 flex items-center">
+            <span className="font-bold mr-3 w-[150px]">First Name:</span>
+            <span>{firstName}</span>
+          </div>
+          <div className="my-5 flex items-center">
+            <span className="font-bold mr-3 w-[150px]">Last Name:</span>
+            <span>{lastName}</span>
+          </div>
+          <div className="my-5 flex items-center">
+            <span className="font-bold mr-3 w-[150px]">Description:</span>
+            <span>{description}</span>
+          </div>
+          <div className="my-5 flex items-center">
+            <span className="font-bold mr-3 w-[150px]">Phone:</span>
+            <span>{phoneNumber}</span>
+          </div>
+          <div className="my-5 flex items-center">
+            <span className="font-bold mr-3 w-[150px]">Gender:</span>
+            <span>{gender}</span>
+          </div>
+          <div className="my-5 flex items-center">
+            <span className="font-bold mr-3 w-[150px]">Address:</span>
+            <span>{address}</span>
+          </div>
         </div>
       </div>
       <Modal isShow={show} setShow={handleShow}>
-        <Update />
+        <Update data={data} setIsReset={setIsReset} handleShow={handleShow} />
       </Modal>
     </>
   );

@@ -1,6 +1,6 @@
 import apiService from "./apiService";
-import axios from "axios";
-import { Amenity, Category, SignupITF, UpdateITF } from "../interfaces/global";
+import axios, { AxiosRequestConfig } from "axios";
+import { Amenity, Category, CheckOutITF, CheckoutInfoGet, SignupITF, UpdateITF } from "../interfaces/global";
 
 class HttpService {
   searchRooms() {
@@ -69,6 +69,14 @@ class HttpService {
       false,
       false
     );
+  }
+
+  getProfile(token: string): Promise<any> {
+     return apiService.getMethodToken(`/users/me`,{},{
+       headers: {
+         Authorization: `Bearer ${token}`,
+       },
+      });
   }
 
   updateAvatar(data: FormData, token: string): Promise<any> {
@@ -264,6 +272,29 @@ class HttpService {
     return apiService.getMethod(`/checkout/price`, {
       ...data,
     });
+  }
+
+  getInfoCheckout(data: CheckoutInfoGet): Promise<any> {
+    return apiService.getMethod(`/checkout/info`, {
+      ...data,
+    });
+  }
+
+  checkout(data: CheckOutITF, token: string): Promise<any> {
+    console.log(token);
+
+    const config: AxiosRequestConfig = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    return apiService.postMethod(
+      `/checkout`,
+      {
+        ...data,
+      },
+      config
+    );
   }
 
   // End handle checkout

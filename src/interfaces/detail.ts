@@ -1,35 +1,39 @@
 export interface RoomDetail {
-  room: {
-    name: string;
-    description: string;
-    pricePerNight: number;
-    guests: number;
-    bedrooms: number;
-    livingRooms: number;
-    beds: number;
-    baths: number;
-    location: {
-      type: string;
-      address: string;
-      coordinates: number[];
-    };
-    reviews: any[];
+  _id:string;
+  name: string;
+  description: string;
+  pricePerNight: number;
+  guests: number;
+  bedrooms: number;
+  livingRooms: number;
+  beds: number;
+  baths: number;
+  location: {
+    type: string;
     address: string;
-    propertyType: string;
-    amenities: string[];
-    categories: string[];
-    images: {
-      publicUrl: string;
-      hint: string;
-    }[];
+    coordinates: number[];
   };
+  bookings: {
+    _id: string;
+    checkIn: string;
+    checkOut: string;
+  }[];
+  reviews: any[];
+  address: string;
+  propertyType: string;
+  amenities: string[];
+  categories: string[];
+  images: {
+    publicUrl: string;
+    hint: string;
+  }[];
   owner: {
     email: string;
     firstName: string;
     lastName: string;
     profilePic: string;
   };
-}
+};
 
 export interface WelcomeCancellationPolicy {
   __typename: string;
@@ -286,3 +290,4 @@ export interface Owner {
   lastName: string;
   profilePic: string;
 }
+

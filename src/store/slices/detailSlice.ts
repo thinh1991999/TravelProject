@@ -3,7 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 // import type { RootState } from "../../app/store";
 import { DetailState, GlobalState, GuestsEnum } from "../../interfaces/redux";
 import { RoomDetail } from "../../interfaces/detail";
-import { getAverageRating } from "../../share/ultils";
+import { getAverageRating, getDateArrBetween } from "../../share/ultils";
 
 // Define the initial state using that type
 const initialState: DetailState = {
@@ -17,6 +17,7 @@ const initialState: DetailState = {
   list: [{ a: "1" }],
   roomDetail: null,
   rating: 0,
+  disabledDate:[]
 };
 
 export const globalSlice = createSlice({
@@ -32,7 +33,21 @@ export const globalSlice = createSlice({
       }
     },
     setRoomDetail: (state, action: PayloadAction<RoomDetail>) => {
-      state.rating = getAverageRating(action.payload.room.reviews);
+      state.checkin=null;
+      state.checkout=null;
+      state.adults=1;
+      state.children=0;
+      state.pets=0
+      state.rating = getAverageRating(action.payload.reviews);
+      const bookings=action.payload.bookings;
+      console.log(bookings);
+      
+      const disabedArr=[];
+      for(let vl of bookings){
+        // console.log(vl,getDateArrBetween(vl.checkIn, vl.checkOut));
+        disabedArr.push(...getDateArrBetween(vl.checkIn,vl.checkOut));
+      }
+      state.disabledDate = disabedArr;
       state.roomDetail = action.payload;
     },
     setCheckin: (state, action: PayloadAction<Date | null>) => {

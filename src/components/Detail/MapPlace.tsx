@@ -8,9 +8,7 @@ const MapPlace = () => {
   const roomDetail = useAppSelector((state) => state.detail.roomDetail);
   if (!roomDetail) return <></>;
   const {
-    room: {
-      location: { address, coordinates },
-    },
+    location: { address, coordinates },
   } = roomDetail;
 
   return (

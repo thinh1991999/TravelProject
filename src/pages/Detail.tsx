@@ -23,6 +23,7 @@ const Detail = () => {
   useEffect(() => {
     setLoading(true);
     httpService.getDetail(id || "").then((res) => {
+      console.log(res.data.room);
       dispatch(setRoomDetail(res.data.room));
       setLoading(false);
     });

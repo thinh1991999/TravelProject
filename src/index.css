@@ -339,6 +339,12 @@ abbr:where([title]) {
   text-decoration: unset !important;
 }
 
+#date_box .react-calendar__tile:disabled{
+  background: transparent;
+  opacity: 0.3;
+  text-decoration: line-through;
+}
+
 /* Animations */
 @keyframes rotate {
   0%,

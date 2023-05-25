@@ -1,3 +1,5 @@
+import { RoomDetail } from "./detail";
+
 export interface Room {
   location: Location;
   _id: string;
@@ -44,10 +46,10 @@ export interface Price {
 }
 
 export interface GuestsITF {
-  adults: number;
-  children: number;
-  infants: number;
-  pets: number;
+  adults: number|string;
+  children: number|string;
+  infants?: number|string;
+  pets: number|string;
 }
 
 export type EachRoomType = "ALL" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | "MAX";
@@ -147,8 +149,58 @@ export interface Token {
 }
 
 export interface CheckoutPrice {
-  price: number;
-  days: number;
-  total: number;
-  tax: number;
+  id: string;
+  checkin: Date;
+  checkout: Date;
+  adults: string;
+  pets: string;
+  children: string;
+  totalPrice: number;
+  nights:number
+  pricePerNight: number;
+}
+
+export interface CheckoutInfoGet {
+  room: string | null;
+  children: string | null;
+  adults: string | null;
+  pets: string | null;
+  checkin: string | null;
+  checkout: string | null;
+}
+
+
+export interface CheckoutInfoAll {
+  infoCheckout: CheckoutPrice;
+  room: RoomDetail;
+}
+
+export interface CheckOutITF {
+  user: string;
+  room: string;
+  checkin: Date;
+  checkout: Date;
+  adults: number;
+  children: number;
+  pets: number;
+  status: "PAY_FULL"|"PAY_PART";
+}
+
+export interface CheckOutSuccess {
+  booking: {
+    status: string;
+    _id: string;
+    user: string;
+    room: string;
+    checkIn: Date;
+    checkOut: Date;
+    nights: number;
+    adults: number;
+    children: number;
+    pets: number;
+    totalPrice: number;
+    createdAt: Date;
+    __v: number;
+  },
+  room:RoomDetail
 }

@@ -5,10 +5,11 @@ import httpService from "../../services/httpService";
 import { validateImage } from "../../share/ultils";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { setUser } from "../../store/slices/globalSlice";
+import { User } from "../../interfaces/global";
 
-const Left = () => {
+const Left = ({ data, setIsReset }: { data?: User; setIsReset:Function }) => {
   const disptach = useAppDispatch();
-  const user = useAppSelector((state) => state.global.user);
+  // const user = useAppSelector((state) => state.global.user);
   const token = useAppSelector((state) => state.global.token);
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -30,6 +31,7 @@ const Left = () => {
           .then((res) => {
             const { message, user } = res.data;
             disptach(setUser(user));
+            setIsReset(true);
             setLoading(false);
             toast.success(message);
           })
@@ -48,7 +50,7 @@ const Left = () => {
       <div className="py-10 shadow-box flex justify-center flex-col items-center">
         <div className="w-[150px] h-[150px] rounded-full overflow-hidden">
           <img
-            src={user?.profilePic}
+            src={data?.profilePic}
             alt=""
             className="w-full h-full object-cover shadow-xl"
           />

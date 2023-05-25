@@ -15,7 +15,7 @@ const Amenities = () => {
 
   useEffect(() => {
     if (!roomDetail) return;
-    const rAmenities = roomDetail.room.amenities;
+    const rAmenities = roomDetail.amenities;
     setData(amenities.filter((vl) => rAmenities.includes(vl._id)));
     setNone(amenities.filter((vl) => !rAmenities.includes(vl._id)));
   }, [amenities, roomDetail]);

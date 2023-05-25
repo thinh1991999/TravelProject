@@ -1,12 +1,13 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
 import { TailSpin } from "react-loader-spinner";
 import { Link } from "react-router-dom";
-import { SignupITF, UpdateITF } from "../../interfaces/global";
+import { SignupITF, UpdateITF, User } from "../../interfaces/global";
 import httpService from "../../services/httpService";
 import Validator from "../../share/validator";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { setUser } from "../../store/slices/globalSlice";
 import Mess from "../Mess";
+import { toast } from "react-toastify";
 
 const rules = [
   {
@@ -48,10 +49,17 @@ const rules = [
   },
 ];
 
-const Update = () => {
+const Update = ({
+  data,
+  setIsReset,
+  handleShow,
+}: {
+  data?: User;
+  setIsReset: Function;
+  handleShow:Function
+}) => {
   const disptach = useAppDispatch();
 
-  const user = useAppSelector((state) => state.global.user);
   const token = useAppSelector((state) => state.global.token);
 
   const [values, setValues] = useState<UpdateITF>({
@@ -80,11 +88,10 @@ const Update = () => {
         .then((res) => {
           const { message, user } = res.data;
           disptach(setUser(user));
-          setMess({
-            type: true,
-            value: message,
-          });
+          toast.success(message);
           setLoading(false);
+          setIsReset(true);
+          handleShow(false);
         })
         .catch((err) => {
           setMess({
@@ -126,9 +133,9 @@ const Update = () => {
   };
 
   useLayoutEffect(() => {
-    if (!user) return;
+    if (!data) return;
     const { firstName, lastName, address, description, phoneNumber, gender } =
-      user;
+      data;
     setValues({
       address,
       description,
@@ -137,7 +144,7 @@ const Update = () => {
       gender,
       phoneNumber,
     });
-  }, [user]);
+  }, [data]);
 
   return (
     <div className="max-h-screen flex flex-col md:p-5 p-2 bg-white rounded-md shadow-md md:w-[500px]">

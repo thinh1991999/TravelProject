@@ -19,13 +19,15 @@ const Modal = ({
           onClick={() => setShow(false)}
         ></div>
         <div className=" bg-white relative rounded-md">
-          {/* <button
-            className="btn btn-trans btn-x text-xl font-bold w-[50px] h-[50px]"
-            onClick={() => setShow(false)}
-          >
-            <AiOutlineClose />
-          </button> */}
-          {children}
+          <div className="">
+            <button
+              className="btn btn-trans btn-x text-xl font-bold w-[50px] h-[50px]"
+              onClick={() => setShow(false)}
+            >
+              <AiOutlineClose />
+            </button>
+          </div>
+          <div className="">{children}</div>
         </div>
       </div>
     </div>

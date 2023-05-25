@@ -39,6 +39,7 @@ import Done from "./components/BecomeHost/Done";
 import LayoutHosting from "./components/LayoutHosting";
 import Listing from "./pages/Listing";
 import Hosting from "./pages/Hosting";
+import Checkout from "./pages/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -111,6 +112,14 @@ const router = createBrowserRouter([
       <Auth>
         <ResetPw />
       </Auth>
+    ),
+  },
+  {
+    path: "/checkout",
+    element: (
+      <Layout showHeadSub={false}>
+        <Checkout />
+      </Layout>
     ),
   },
   {

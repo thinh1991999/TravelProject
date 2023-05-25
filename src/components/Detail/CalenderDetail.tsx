@@ -1,19 +1,21 @@
-import { useAppDispatch } from "../../store/hook";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { clearCheck } from "../../store/slices/detailSlice";
 import Calendar from "../Calendar";
 import CalendarInfo from "./CalenderInfo";
 
 const CalenderDetail = () => {
   const dispatch = useAppDispatch();
+  const disabledArr=useAppSelector(state=>state.detail.disabledDate);
   return (
     <>
       <CalendarInfo />
       <div className="mt-5">
         <div className="lg:block hidden">
-          <Calendar showDouble={true} />
+          <Calendar disabledDate={disabledArr} showDouble={true} />
         </div>
         <div className="lg:hidden block">
-          <Calendar showDouble={false} />
+          <Calendar disabledDate={disabledArr} showDouble={false} />
         </div>
       </div>
       <div className="flex justify-end">

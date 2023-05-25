@@ -8,8 +8,9 @@ const AllImages = lazy(() => import("./AllImages"));
 const Images = () => {
   const [isShowAll, setIsShowAll] = useState<boolean>(false);
   const roomDetail = useAppSelector((state) => state.detail.roomDetail);
+  
   if (!roomDetail) return <></>;
-  const { images } = roomDetail.room;
+  const { images } = roomDetail;
   return (
     <>
       <div className="my-3 rounded-xl overflow-hidden flex relative h-[300px] lg:h-[calc(60vh_-_64px)]">

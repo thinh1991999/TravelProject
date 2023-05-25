@@ -24,10 +24,13 @@ export function getCenterMap(arr: Room[]) {
 }
 
 export const getAverageRating = (reviews: Review[]) => {
+  console.log(reviews);
+  
   if (reviews.length === 0) return 0;
   const total = reviews.reduce((prev, curr) => {
     return (prev += curr.rating);
   }, 0);
+  
   return (total / reviews.length).toFixed(2);
 };
 
@@ -63,13 +66,44 @@ export const getTime = (time: any) => {
 };
 
 export const getGuests = (
-  adults: number,
-  children: number,
-  infants: number,
-  pets: number
+  adults: number|string,
+  children: number|string,
+  // infants: number|string,
+  pets: number|string
 ) => {
-  const guestsT = `${adults + children} guests`;
-  const infantsT = infants ? `,${infants} infants` : "";
+  const guests=Number(adults)*1+Number(children)*1;
+  const guestsT = `${guests} guests`;
+  // const infantsT = infants ? `,${infants} infants` : "";
   const petsT = pets ? `,${pets} pets` : "";
-  return guestsT + infantsT + petsT;
+  return guestsT  + petsT;
+};
+
+
+export const getDateArrBetween=(begin:string,des:string)=>{
+  const start = moment(begin);
+  const end = moment(des);
+
+  const daysBetween = [];
+  let currentDay = moment(start);
+  const currDay = moment();
+  while (currentDay.isSameOrBefore(end)) {
+    const checkDiff = currentDay.diff(currDay, "days");
+    console.log(checkDiff, currentDay.calendar(),currDay.calendar());
+    if (checkDiff >= 0) {
+          daysBetween.push(currentDay.format("YYYY-MM-DD"));
+    }
+    currentDay.add(1, "day");
+  }
+  return daysBetween
+}
+
+
+export const checkIncludeDate=(arr:string[],date:Date)=>{
+  const dateC = moment(date).format("YYYY-MM-DD");
+  return arr.includes(dateC)
+}
+
+
+export const checkValidDateCalendar = (start: Date, end: Date, disabledArr: string[]) => {
+  
 };

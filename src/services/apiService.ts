@@ -10,7 +10,6 @@ class ApiService {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA2YzU3NjQ4OWI5Y2VhZjAzYmJjY2UiLCJpYXQiOjE2NzgxODA1MDF9.YPTPpdLHxxWEsCMT_JZaIafvxJ4yoyJ-gB9kz_oLKIo`,
       },
     });
   }
@@ -34,6 +33,23 @@ class ApiService {
     return this.axios.get(url, this.axiosConfig);
   }
 
+  getMethodToken(
+    url: string,
+    params?: object,
+    config?: AxiosRequestConfig,
+    isFlow?: boolean,
+    isHandleError?: boolean
+  ) {
+    if (isFlow) {
+      return this.hanldeFlow(
+        this.axios.get(url, config),
+        isFlow,
+        isHandleError
+      );
+    }
+    return this.axios.get(url, config);
+  }
+
   postMethod(
     url: string,
     data: object,
@@ -42,11 +58,7 @@ class ApiService {
     isHandleError?: boolean
   ) {
     console.log(data);
-    return this.hanldeFlow(
-      this.axios.post(url, data, config),
-      isFlow,
-      isHandleError
-    );
+    return this.axios.post(url, data, config);
   }
 
   putMethod(

@@ -127,12 +127,12 @@ export const guestSearch: {
     hint: GuestsEnum.CHILDREN,
     tail: "children",
   },
-  {
-    title: "Infants",
-    sub: "Under 2",
-    hint: GuestsEnum.INFANTS,
-    tail: "infants",
-  },
+  // {
+  //   title: "Infants",
+  //   sub: "Under 2",
+  //   hint: GuestsEnum.INFANTS,
+  //   tail: "infants",
+  // },
   {
     title: "Pets",
     sub: "",
@@ -198,5 +198,22 @@ export const filtersRoom: {
   {
     title: "Bathrooms",
     hint: "bathRooms",
+  },
+];
+
+
+export const payInfo: {
+  title: string;
+  hint: "PAY_FULL" | "PAY_PART";
+  sub?: string;
+}[] = [
+  {
+    title: "Pay full",
+    hint: "PAY_FULL",
+    sub: "Pay the total and you're all set.",
+  },
+  {
+    title: "Pay part now, part later",
+    hint: "PAY_PART",
   },
 ];

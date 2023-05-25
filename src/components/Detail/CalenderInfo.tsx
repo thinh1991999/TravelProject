@@ -13,7 +13,7 @@ const CalendarInfo = () => {
     <>
       <h4 className="one-line-max">
         {checkin && checkout
-          ? `${days} nights in ${roomDetail?.room.name}`
+          ? `${days} nights in ${roomDetail?.name}`
           : "Select check-in date"}
       </h4>
       {checkin && checkout ? (

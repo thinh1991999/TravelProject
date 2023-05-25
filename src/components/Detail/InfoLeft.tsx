@@ -11,10 +11,10 @@ import CalenderDetail from "./CalenderDetail";
 const InfoLeft = () => {
   const roomDetail = useAppSelector((state) => state.detail.roomDetail);
   const [show, handleShow] = useModal();
-
+  
   if (!roomDetail) return <></>;
   const { firstName, lastName, profilePic } = roomDetail.owner;
-  const { propertyType, description } = roomDetail.room;
+  const { propertyType, description } = roomDetail;
   return (
     <>
       <div className="py-4 flex justify-between items-center border-b border-color">

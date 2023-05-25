@@ -22,6 +22,7 @@ export type DetailState = {
   list: any;
   roomDetail: RoomDetail | null;
   rating: string | 0;
+  disabledDate: string[];
 };
 
 export type SearchState = {
@@ -34,6 +35,6 @@ export type SearchState = {
 export enum GuestsEnum {
   ADULTS = "adults",
   CHILDREN = "children",
-  INFANTS = "infants",
+  // INFANTS = "infants",
   PETS = "pets",
 }
