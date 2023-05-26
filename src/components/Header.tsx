@@ -79,16 +79,16 @@ const Header = () => {
                   </button>
                 </div>
               </div>
-              <div className="md:w-3/12 flex items-center justify-between">
-                <Link
+              <div className="md:w-3/12 flex items-center justify-end">
+                {/* <Link
                   to={"/hosting"}
                   className="btn btn-trans font-semibold whitespace-nowrap"
                 >
                   Your home
-                </Link>
-                <button className="whitespace-nowrap text-xl mx-5 p-0 w-[40px] h-[40px] flex justify-center items-center btn btn-trans font-semibold">
+                </Link> */}
+                {/* <button className="whitespace-nowrap text-xl mx-5 p-0 w-[40px] h-[40px] flex justify-center items-center btn btn-trans font-semibold">
                   <AiOutlineGlobal />
-                </button>
+                </button> */}
                 <User />
               </div>
             </div>
