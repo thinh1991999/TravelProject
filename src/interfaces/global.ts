@@ -46,10 +46,10 @@ export interface Price {
 }
 
 export interface GuestsITF {
-  adults: number|string;
-  children: number|string;
-  infants?: number|string;
-  pets: number|string;
+  adults: number | string;
+  children: number | string;
+  infants?: number | string;
+  pets: number | string;
 }
 
 export type EachRoomType = "ALL" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | "MAX";
@@ -156,7 +156,7 @@ export interface CheckoutPrice {
   pets: string;
   children: string;
   totalPrice: number;
-  nights:number
+  nights: number;
   pricePerNight: number;
 }
 
@@ -168,7 +168,6 @@ export interface CheckoutInfoGet {
   checkin: string | null;
   checkout: string | null;
 }
-
 
 export interface CheckoutInfoAll {
   infoCheckout: CheckoutPrice;
@@ -183,7 +182,7 @@ export interface CheckOutITF {
   adults: number;
   children: number;
   pets: number;
-  status: "PAY_FULL"|"PAY_PART";
+  status: "PAY_FULL" | "PAY_PART";
 }
 
 export interface CheckOutSuccess {
@@ -201,6 +200,22 @@ export interface CheckOutSuccess {
     totalPrice: number;
     createdAt: Date;
     __v: number;
-  },
-  room:RoomDetail
+  };
+  room: RoomDetail;
+}
+
+export interface Booking {
+  status: string;
+  _id: string;
+  user: string;
+  room: RoomDetail;
+  checkIn: Date;
+  checkOut: Date;
+  nights: number;
+  adults: number;
+  children: number;
+  pets: number;
+  totalPrice: number;
+  createdAt: Date;
+  __v: number;
 }

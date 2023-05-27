@@ -77,9 +77,9 @@ const User = () => {
                   Profile
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Notifications />
-              </li>
+              </li> */}
               <li onClick={handleLogout}>
                 <span className="block py-2 px-3 font-semibold text-start cursor-pointer hover:bg-gray-300">
                   Log out

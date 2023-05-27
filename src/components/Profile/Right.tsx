@@ -6,15 +6,24 @@ import { useAppSelector } from "../../store/hook";
 import Modal from "../Modal";
 import Update from "./Update";
 import { User } from "../../interfaces/global";
+import Bookings from "./Bookings";
 
 const Right = ({ data, setIsReset }: { data?: User; setIsReset: Function }) => {
   const [show, handleShow] = useModal(false);
 
   if (!data) return <></>;
 
-  const { firstName, lastName, createdAt, description, email, phoneNumber,gender,address } =
-    data;
-  
+  const {
+    firstName,
+    lastName,
+    createdAt,
+    description,
+    email,
+    phoneNumber,
+    gender,
+    address,
+  } = data;
+
   return (
     <>
       <div>

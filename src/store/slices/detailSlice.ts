@@ -17,7 +17,7 @@ const initialState: DetailState = {
   list: [{ a: "1" }],
   roomDetail: null,
   rating: 0,
-  disabledDate:[]
+  disabledDate: [],
 };
 
 export const globalSlice = createSlice({
@@ -33,19 +33,16 @@ export const globalSlice = createSlice({
       }
     },
     setRoomDetail: (state, action: PayloadAction<RoomDetail>) => {
-      state.checkin=null;
-      state.checkout=null;
-      state.adults=1;
-      state.children=0;
-      state.pets=0
+      state.checkin = null;
+      state.checkout = null;
+      state.adults = 1;
+      state.children = 0;
+      state.pets = 0;
       state.rating = getAverageRating(action.payload.reviews);
-      const bookings=action.payload.bookings;
-      console.log(bookings);
-      
-      const disabedArr=[];
-      for(let vl of bookings){
-        // console.log(vl,getDateArrBetween(vl.checkIn, vl.checkOut));
-        disabedArr.push(...getDateArrBetween(vl.checkIn,vl.checkOut));
+      const bookings = action.payload.bookings;
+      const disabedArr = [];
+      for (let vl of bookings) {
+        disabedArr.push(...getDateArrBetween(vl.checkIn, vl.checkOut));
       }
       state.disabledDate = disabedArr;
       state.roomDetail = action.payload;

@@ -8,6 +8,7 @@ import { changeShowSearch, setSearchDrop } from "../store/slices/globalSlice";
 import Logo from "./Logo";
 import SearchDrop from "./SearchDrop";
 import User from "./User";
+import SearchRoom from "./SearchRoom";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -53,31 +54,7 @@ const Header = () => {
                 <Logo />
               </div>
               <div className="flex-1 flex justify-center">
-                <div className=" flex justify-center py-3 px-5 shadow rounded-full hv-sd cursor-pointer">
-                  <div
-                    className="px-4 overflow-ellipsis whitespace-nowrap flex-center"
-                    onClick={() => hanldleShowSearch()}
-                  >
-                    Anywhere
-                  </div>
-                  <div className="div-bd"></div>
-                  <div
-                    className="px-4 overflow-ellipsis whitespace-nowrap flex-center"
-                    onClick={() => hanldleShowSearch()}
-                  >
-                    Any week
-                  </div>
-                  <div className="div-bd"></div>
-                  <div
-                    className="px-4 sub-gray overflow-ellipsis whitespace-nowrap flex-center"
-                    onClick={() => hanldleShowSearch()}
-                  >
-                    Add guests
-                  </div>
-                  <button className="p-0 w-[30px] h-[30px] flex justify-center items-center text-xl btn btn-primary rounded-full">
-                    <AiOutlineSearch />
-                  </button>
-                </div>
+                <SearchRoom />
               </div>
               <div className="md:w-3/12 flex items-center justify-end">
                 {/* <Link

@@ -98,12 +98,12 @@ const Info = ({
   id,
 }: {
   data: CheckoutPrice;
-  children:number
-  adults:number
-  pets:number
-  checkin:Date|null
-  checkout:Date|null
-  id?:string
+  children: number;
+  adults: number;
+  pets: number;
+  checkin: Date | null;
+  checkout: Date | null;
+  id?: string;
 }) => {
   const navigate = useNavigate();
 
@@ -163,8 +163,6 @@ const Checkout = () => {
   const isShowReserveBtn = useMemo(() => {
     return checkin && checkout;
   }, [checkin, checkout]);
-
- 
 
   const handlePlus = (hint: GuestsEnum) => {
     dispatch(handleIncreaseGuests(hint));
@@ -230,7 +228,7 @@ const Checkout = () => {
           setLoading(false);
           setData(null);
         });
-    }else{
+    } else {
       setData(null);
       setLoading(false);
     }
@@ -337,18 +335,27 @@ const Checkout = () => {
         </div>
 
         {data ? (
-          <Info data={data} id={id} checkin={checkin} checkout={checkout} adults={adults} children={children} pets={pets}/>
+          <Info
+            data={data}
+            id={id}
+            checkin={checkin}
+            checkout={checkout}
+            adults={adults}
+            children={children}
+            pets={pets}
+          />
         ) : loading ? (
           <button className="btn btn-primary w-full mt-5 opacity-50 cursor-not-allowed">
             <LoadingSpinner />
           </button>
         ) : (
-          <button
-            onClick={() => setShowTime(1)}
-            className="btn btn-primary w-full mt-5"
-          >
-            Check availability
-          </button>
+          // <button
+          //   onClick={() => setShowTime(1)}
+          //   className="btn btn-primary w-full mt-5"
+          // >
+          //   Check availability
+          // </button>
+          <></>
         )}
       </div>
     </div>

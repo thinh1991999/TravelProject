@@ -1,6 +1,13 @@
 import apiService from "./apiService";
 import axios, { AxiosRequestConfig } from "axios";
-import { Amenity, Category, CheckOutITF, CheckoutInfoGet, SignupITF, UpdateITF } from "../interfaces/global";
+import {
+  Amenity,
+  Category,
+  CheckOutITF,
+  CheckoutInfoGet,
+  SignupITF,
+  UpdateITF,
+} from "../interfaces/global";
 
 class HttpService {
   searchRooms() {
@@ -72,11 +79,27 @@ class HttpService {
   }
 
   getProfile(token: string): Promise<any> {
-     return apiService.getMethodToken(`/users/me`,{},{
-       headers: {
-         Authorization: `Bearer ${token}`,
-       },
-      });
+    return apiService.getMethodToken(
+      `/users/me`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  }
+
+  getBookings(token: string): Promise<any> {
+    return apiService.getMethodToken(
+      `/users/me/bookings`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
   }
 
   updateAvatar(data: FormData, token: string): Promise<any> {
@@ -130,6 +153,12 @@ class HttpService {
 
   getRoomFilter(params: object): Promise<any> {
     return apiService.getMethod(`/room/filter`, params);
+  }
+
+  getRoomFilterName(value: string): Promise<any> {
+    return apiService.getMethod(`/room/name/match`, {
+      name: value,
+    });
   }
 
   // Begin handle review

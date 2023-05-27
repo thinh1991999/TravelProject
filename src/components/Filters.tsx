@@ -16,7 +16,7 @@ const Filters = ({ handleShow }: { handleShow: Function }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [values, setValues] = useState<FiltersITF>({
     minPrice: 0,
-    maxPrice: 100000,
+    maxPrice: 10000,
     bathRooms: "ALL",
     bedRooms: "ALL",
     beds: "ALL",
@@ -71,7 +71,7 @@ const Filters = ({ handleShow }: { handleShow: Function }) => {
   const handleClearAll = () => {
     setValues({
       minPrice: 0,
-      maxPrice: 100000,
+      maxPrice: 10000,
       bathRooms: "ALL",
       bedRooms: "ALL",
       beds: "ALL",
@@ -212,10 +212,22 @@ const Filters = ({ handleShow }: { handleShow: Function }) => {
                 onSubmit={(e) => e.preventDefault()}
               >
                 <div className="py-5 border-b border-color">
-                  <h5 className="font-medium">Price range</h5>
-                  <span className="text-gray-500 mt-1">
-                    The average nightly price is $4,010
-                  </span>
+                  <h5 className="font-medium">
+                    Max price: <span>{values.maxPrice}$</span>
+                  </h5>
+                  <input
+                    type="range"
+                    min={0}
+                    max={10000}
+                    className="w-full"
+                    step={100}
+                    value={values.maxPrice}
+                    onChange={(e) => {
+                      setValues((prev: any) => {
+                        return { ...prev, maxPrice: e.target.value };
+                      });
+                    }}
+                  />
                 </div>
                 <div className="py-5 border-b border-color">
                   <h5 className="font-medium">Type of place</h5>
